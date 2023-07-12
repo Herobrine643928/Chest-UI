@@ -52,6 +52,7 @@ Original JSON UI created by LeGend077
 
 [GitHub](https://github.com/LeGend077)
 
+[Discord](https://discord.com/users/695712100072292482)
 
 Script extension & JSON UI rewrite by Herobrine643928
 
