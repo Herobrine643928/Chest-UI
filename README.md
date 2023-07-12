@@ -10,14 +10,8 @@ A Minecraft: Bedrock Script API pack that alters the Action Form UI to look & fu
 - Easy to read
 - Good for large numbers of buttons
 
-# Functions
-- UI name
-- UI size, small or large chest
-- Item slot
-- Item name
-- Item lore
-- Item texture
-- Item stack size
+Note that the inventory section of the form is simply for display, and does not reflect the actual player's inventory. Hopefully coming soon!
+Also note that custom UI retextures will not affect these UIs, as they are controlled by `RP/textures/u/generic_27` & `RP/textures/u/generic_54`.
 
 # Usage
 Import into file- this example will work for any top-level file. Changes will be needed for nested files.
@@ -30,8 +24,12 @@ Create a new chest form, like you would for any other form UI. The size can be l
 const form = new ChestFormData()
 ```
 
-Add buttons!
+Add a name to the UI, to display at the top.
+```js
+form.title('Form Title')
 ```
+Add buttons!
+```js
 form.button(0, 'Button Name', ['Button Lore'], 'textures/button', 6)
 ```
 The parameters for the button are as follows:
