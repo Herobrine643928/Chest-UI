@@ -68,6 +68,24 @@
 								"collection_name": "form_buttons",
 								"layer": 1
 							}
+						},
+						{
+							"inventory_text": {
+								"type": "label",
+								"anchor_from": "top_left",
+								"anchor_to": "top_left",
+								"offset": [
+									7,
+									"100% - 90px"
+								],
+								"size": [
+									"90%",
+									"default"
+								],
+								"layer": 2,
+								"color": "$title_text_color",
+								"text": "container.inventory"
+							}
 						}
 					],
 					"bindings": [
@@ -124,6 +142,24 @@
 								"grid_item_template": "chest_ui.inventory_item",
 								"collection_name": "form_buttons",
 								"layer": 1
+							}
+						},
+						{
+							"inventory_text": {
+								"type": "label",
+								"anchor_from": "top_left",
+								"anchor_to": "top_left",
+								"offset": [
+									7,
+									"100% - 90px"
+								],
+								"size": [
+									"90%",
+									"default"
+								],
+								"layer": 2,
+								"color": "$title_text_color",
+								"text": "container.inventory"
 							}
 						}
 					],
