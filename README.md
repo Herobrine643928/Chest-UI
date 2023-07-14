@@ -47,6 +47,13 @@ Show it to the player & get a response
 form.show(player).then(response)
 ```
 
+# Future Ideas
+
+- Functioning inventory section (it’s just for looks at the moment)
+- Customizable background (Using the vanilla ui nineslice, as right now it’s just a static texture)
+- Enchanted items support
+- Dynamic sizing based on number of buttons
+
 # Credits
 
 Original JSON UI created by LeGend077
