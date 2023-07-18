@@ -1,0 +1,54 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Chest UI",
+		"description": "Chest UI",
+		"uuid": "ebb80f49-f27e-4da7-db55-cc166d3aa425",
+		"version": [
+			1,
+			1,
+			0
+		],
+		"min_engine_version": [
+			1,
+			18,
+			0
+		]
+	},
+	"modules": [
+		{
+			"type": "data",
+			"uuid": "84d5a89b-8dcc-0308-a7d7-fd5f8123bba7",
+			"version": [
+				0,
+				0,
+				1
+			]
+		},
+		{
+			"type": "script",
+			"language": "javascript",
+			"entry": "scripts/index.js",
+			"uuid": "2fa09013-80e6-c43a-e1c7-73dafb30fdd0",
+			"version": "1.4.0-beta"
+		}
+	],
+	"metadata": {
+		"authors": [
+			"Herobrine64#3928",
+			"LeGend077"
+		]
+	},
+	"dependencies": [
+		{
+			"description": "@minecraft/server module dependency",
+			"module_name": "@minecraft/server",
+			"version": "1.4.0-beta"
+		},
+		{
+			"description": "@minecraft/server-ui module dependency",
+			"module_name": "@minecraft/server-ui",
+			"version": "1.2.0-beta"
+		}
+	]
+}
