@@ -2,7 +2,7 @@
 	"format_version": 2,
 	"header": {
 		"name": "Chest UI",
-		"description": "Chest UI",
+		"description": "CHest UI",
 		"uuid": "792bede7-337e-41e9-09c3-dd20395d1263",
 		"version": [
 			1,
@@ -13,12 +13,6 @@
 			1,
 			17,
 			0
-		]
-	},
-	"metadata": {
-		"authors": [
-			"Herobrine64#3928",
-			"LeGend077"
 		]
 	},
 	"modules": [
