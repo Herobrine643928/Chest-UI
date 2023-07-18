@@ -273,58 +273,25 @@
 					],
 					"controls": [
 						{
-							"item_details_panel": {
-								"type": "input_panel",
-								"size": [
-									"100%c",
-									"100%c"
-								],
-								"follows_cursor": true,
-								"always_handle_pointer": true,
-								"always_listen_to_input": true,
-								"hover_enabled": true,
-								"controls": [
+							"item_details": {
+								"type": "custom",
+								"renderer": "hover_text_renderer",
+								"allow_clipping": false,
+								"layer": 30,
+								"bindings": [
 									{
-										"item_details_background": {
-											"type": "image",
-											"size": [
-												"100%c + 9px",
-												"100%c + 6px"
-											],
-											"offset": [
-												"50%c + 14px",
-												-2
-											],
-											"texture": "textures/ui/purpleBorder",
-											"layer": 10,
-											"anchor_from": "right_middle",
-											"anchor_to": "right_middle",
-											"controls": [
-												{
-													"item_details_label": {
-														"type": "label",
-														"text": "#item_details",
-														"text_alignment": "left",
-														"bindings": [
-															{
-																"binding_type": "collection_details",
-																"binding_collection_name": "form_buttons"
-															},
-															{
-																"binding_name": "#form_button_text",
-																"binding_type": "collection",
-																"binding_collection_name": "form_buttons"
-															},
-															{
-																"binding_type": "view",
-																"source_property_name": "(#form_button_text - ('%.8s' * #form_button_text))",
-																"target_property_name": "#item_details"
-															}
-														]
-													}
-												}
-											]
-										}
+										"binding_name": "#form_button_text",
+										"binding_type": "collection",
+										"binding_collection_name": "form_buttons"
+									},
+									{
+										"binding_type": "view",
+										"source_property_name": "(#form_button_text - ('%.8s' * #form_button_text))",
+										"target_property_name": "#hover_text"
+									},
+									{
+										"binding_type": "collection_details",
+										"binding_collection_name": "form_buttons"
 									}
 								]
 							}
