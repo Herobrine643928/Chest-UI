@@ -1,7 +1,0 @@
-{
-    "compilerOptions": {
-        "module": "System",
-        "target": "ES2022",
-    },
-    "files":["import.d.ts"]
-}
