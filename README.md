@@ -12,6 +12,8 @@ A Minecraft: Bedrock Script API pack that alters the Action Form UI to look & fu
 - Easy to read
 - Good for large numbers of buttons
 
+**For Pack's additional features/add-ons, visit the `additional-features` branch.**
+
 Note that the inventory section of the form is simply for display, and does not reflect the actual player's inventory. Hopefully coming soon!
 
 Also note that custom UI retextures will not affect these UIs, as they are controlled by `RP/textures/ui/generic_27.png` & `RP/textures/ui/generic_54.png`.
