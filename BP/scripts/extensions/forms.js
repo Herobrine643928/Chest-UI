@@ -20,7 +20,7 @@ class ChestFormData {
 		return this;
 	}
 	button(slot, itemName, itemDesc, iconPath, stackSize = 1) {
-		this.#buttonArray.splice(slot, 1, [`stack#${Math.min(Math.max(stackSize, 1) || 1, 99).toString().padStart(2, '0')}§r${itemName ?? ''}§r${itemDesc?.length ? `\n§o§5${itemDesc.join('\n§o§5')}` : ''}`, iconPath]);
+		this.#buttonArray.splice(slot, 1, [`stack#${Math.min(Math.max(stackSize, 1) || 1, 99).toString().padStart(2, '0')}§r${itemName ?? ''}§r${itemDesc?.length ? `\n§r${itemDesc.join('\n§r')}` : ''}`, iconPath]);
 		return this;
 	}
 	show(player) {
