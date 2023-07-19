@@ -1,4 +1,4 @@
-import { DynamicPropertiesDefinition, MinecraftEntityTypes, world } from '@minecraft/server';
+import { world } from '@minecraft/server';
 import { ChestFormData } from './extensions/forms.js'
 
 world.afterEvents.itemUse.subscribe(evd => {
