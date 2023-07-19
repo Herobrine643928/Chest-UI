@@ -30,7 +30,7 @@
 					"type": "image",
 					"size": [
 						176,
-						166
+						80
 					],
 					"texture": "textures/ui/generic_27",
 					"$small_chest_flag": "§c§h§e§s§t§s§m§a§l§l",
@@ -56,7 +56,7 @@
 								],
 								"size": [
 									"100% - 14px",
-									"100% - 112px"
+									"100% - 26px"
 								],
 								"offset": [
 									7,
@@ -67,24 +67,6 @@
 								"grid_item_template": "chest_ui.inventory_item",
 								"collection_name": "form_buttons",
 								"layer": 1
-							}
-						},
-						{
-							"inventory_text": {
-								"type": "label",
-								"anchor_from": "top_left",
-								"anchor_to": "top_left",
-								"offset": [
-									7,
-									"100% - 90px"
-								],
-								"size": [
-									"90%",
-									"default"
-								],
-								"layer": 2,
-								"color": "$title_text_color",
-								"text": "container.inventory"
 							}
 						}
 					],
@@ -105,7 +87,7 @@
 					"type": "image",
 					"size": [
 						176,
-						220
+						134
 					],
 					"texture": "textures/ui/generic_54",
 					"$large_chest_flag": "§c§h§e§s§t§l§a§r§g§e",
@@ -131,7 +113,7 @@
 								],
 								"size": [
 									"100% - 14px",
-									"100% - 112px"
+									"100% - 26px"
 								],
 								"offset": [
 									7,
@@ -142,24 +124,6 @@
 								"grid_item_template": "chest_ui.inventory_item",
 								"collection_name": "form_buttons",
 								"layer": 1
-							}
-						},
-						{
-							"inventory_text": {
-								"type": "label",
-								"anchor_from": "top_left",
-								"anchor_to": "top_left",
-								"offset": [
-									7,
-									"100% - 90px"
-								],
-								"size": [
-									"90%",
-									"default"
-								],
-								"layer": 2,
-								"color": "$title_text_color",
-								"text": "container.inventory"
 							}
 						}
 					],
