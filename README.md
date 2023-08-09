@@ -47,7 +47,7 @@ The parameters for the button are as follows:
 1. Location. The slot that the item will display in, starting from zero. Max of 26 for a small chest, or 53 for a large.
 2. Name. The name of the button.
 3. Lore. An array of strings which will display below the item's name.
-4. Texture. Item typeId or path to the texture. Can be used like `minecraft:cake` or `minecraft:acacia_log` (Must include `minecraft:` as the prefix!). For custom textures, specify the path of the texture (it Must include `textures/` in the path!)
+4. Texture. Item typeId or path to the texture. Can be used like `minecraft:cake` or `minecraft:acacia_log` (Must include `minecraft:` as the prefix). For custom textures, specify the path of the texture (Must include `textures/` in the path)
 5. Stack size. This is an optional parameter, and will default to 1. Displays a small number in the lower right-hand corner- useful for shops selling multiple of an item at once!
 6. Enchanted. This is an optional parameter, and will default to false. Displays the enchant glint effect on the item/block rendered using their typeId.
 
