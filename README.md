@@ -2,11 +2,11 @@
 
 A Minecraft: Bedrock Script API pack that alters the Action Form UI to look & function like a chest does.
 
-![image](https://media.discordapp.net/attachments/987989038508159046/1138744566300823582/image.png)
+![image_1](https://github.com/Herobrine643928/Chest-UI/assets/94234093/e8959623-7806-430d-b35c-184f4818e914)
 
-![image](https://github.com/Herobrine643928/Chest-UI/assets/98607285/68a5cc4b-66c7-458d-a99b-acb7e67e9267)
+![image_2](https://github.com/Herobrine643928/Chest-UI/assets/94234093/2ae6b3d8-535e-4164-8073-cabd92ac3d11)
 
-![image](https://user-images.githubusercontent.com/98607285/252969106-5662673a-2cda-40c1-b768-ef5111ef2525.png)
+![image_3](https://github.com/Herobrine643928/Chest-UI/assets/94234093/474ad660-d4f8-4280-9403-d1920efada77)
 
 # Benefits
 
