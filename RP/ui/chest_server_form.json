@@ -185,20 +185,23 @@
 		"$texture_bindings": [
 			{
 				"binding_name": "#form_button_texture",
-				"binding_name_override": "#texture",
-				"binding_type": "collection",
-				"binding_collection_name": "form_buttons"
-			},
-			{
-				"binding_name": "#form_button_texture_file_system",
-				"binding_name_override": "#texture_file_system",
 				"binding_type": "collection",
 				"binding_collection_name": "form_buttons"
 			},
 			{
 				"binding_type": "view",
+				"source_property_name": "(not (('%.8s' * #form_button_texture) = 'textures'))",
+				"target_property_name": "#visible"
+			},
+			{
+				"binding_type": "view",
 				"source_property_name": "(not ((#texture = '') or (#texture = 'loading')))",
 				"target_property_name": "#visible"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#form_button_texture * 1)",
+				"target_property_name": "#item_id_aux"
 			}
 		],
 		"controls": [
@@ -237,6 +240,28 @@
 			}
 		]
 	},
+	"non_renderer_item": {
+		"type": "image",
+		"size": [16, 16],
+		"bindings": [
+			{
+				"binding_name": "#form_button_texture",
+				"binding_name_override": "#texture",
+				"binding_type": "collection",
+				"binding_collection_name": "form_buttons"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(not ((#texture = '') or (#texture = 'loading')))",
+				"target_property_name": "#visible"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(('%.8s' * #texture) = 'textures')",
+				"target_property_name": "#visible"
+			}
+		]
+	},
 	"default_control": {
 		"type": "panel",
 		"size": [
@@ -246,14 +271,13 @@
 		"layer": 3,
 		"controls": [
 			{
-				"item_texture": {
-					"type": "image",
-					"size": [
-						16,
-						16
-					],
+				"item_block@beacon.item_renderer": {
+					"size": [ 16, 16 ],
 					"bindings": "$texture_bindings"
 				}
+			},
+			{
+				"non_renderer_item@chest_ui.non_renderer_item": {}
 			}
 		]
 	},
@@ -297,15 +321,15 @@
 							}
 						},
 						{
-							"item_texture": {
-								"type": "image",
-								"size": [
-									16,
-									16
-								],
-								"layer": 2,
-								"bindings": "$texture_bindings"
+							"item_block@beacon.item_renderer": {
+								"size": [ 16, 16 ],
+								"bindings": "$texture_bindings",
+								"layer": 3,
+								"offset": [1, 1]
 							}
+						},
+						{
+							"non_renderer_item@chest_ui.non_renderer_item": { "layer": 3 }
 						},
 						{
 							"highlight_slot": {
@@ -342,19 +366,13 @@
 		],
 		"controls": [
 			{
-				"item_texture": {
-					"type": "image",
-					"size": [
-						18,
-						18
-					],
-					"layer": 2,
-					"offset": [
-						-5,
-						-5
-					],
+				"item_block@beacon.item_renderer": {
+					"size": [ 16, 16 ],
 					"bindings": "$texture_bindings"
 				}
+			},
+			{
+				"non_renderer_item@chest_ui.non_renderer_item": {}
 			}
 		]
 	},
