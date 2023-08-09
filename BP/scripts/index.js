@@ -1,4 +1,4 @@
-import { world } from '@minecraft/server';
+import { system, world } from '@minecraft/server';
 import { ChestFormData } from './extensions/forms.js';
 
 world.afterEvents.itemUse.subscribe(evd => {
@@ -29,4 +29,4 @@ function secondarymenu(player) {
 			if (response.selection === 0) return primaryMenu(player);
 			world.sendMessage(`${player.name} has chosen item ${response.selection}`);
 		})
-}
+};
