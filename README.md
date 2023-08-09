@@ -51,6 +51,8 @@ The parameters for the button are as follows:
 5. Stack size. This is an optional parameter, and will default to 1. Displays a small number in the lower right-hand corner- useful for shops selling multiple of an item at once!
 6. Enchanted. This is an optional parameter, and will default to false. Displays the enchant glint effect on the item/block rendered using their type id.
 
+Example usage: [`index.js`](https://github.com/Herobrine643928/Chest-UI/blob/main/BP/scripts/index.js).
+
 Find all item/block type ids [here](https://learn.microsoft.com/en-us/minecraft/creator/reference/content/addonsreference/examples/addonitems).
 
 Show it to the player & get a response
