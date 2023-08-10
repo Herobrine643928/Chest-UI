@@ -60,9 +60,9 @@ Example usage: [`index.js`](https://github.com/Herobrine643928/Chest-UI/blob/mai
 
 Find all item/block type ids [here](https://learn.microsoft.com/en-us/minecraft/creator/reference/content/addonsreference/examples/addonitems).
 
-**IMPORTANT!!!**
+### Important!!!
 If you are using behaviour packs with items of format 1.16.100 or higher, vanilla item IDs are changed!
-To remedy this, navigate to `scripts/extensions/forms.js` and change the constant `number_of_1_16_100_items` to whatever number of these format of custom items your pack(s) have.
+To remedy this, navigate to `scripts/extensions/forms.js` and change the constant `number_of_1_16_100_items` to whatever number of 1.16.100+ custom items your applied pack(s) have.
 
 # Future Ideas
 
