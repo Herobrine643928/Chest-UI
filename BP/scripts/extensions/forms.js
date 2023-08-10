@@ -1,6 +1,7 @@
 import { ActionFormData } from '@minecraft/server-ui';
 import { typeIdToID } from "./typeIds.js";
 
+const number_of_1_16_100_items = 0;
 const sizes = new Map([
 	['single', [`§c§h§e§s§t§s§m§a§l§l§r`, 27]], ['double', [`§c§h§e§s§t§l§a§r§g§e§r`, 54]],
 	['small', [`§c§h§e§s§t§s§m§a§l§l§r`, 27]], ['large', [`§c§h§e§s§t§l§a§r§g§e§r`, 54]]
@@ -21,7 +22,9 @@ class ChestFormData {
 		return this;
 	}
 	button(slot, itemName, itemDesc, iconPath, stackSize = 1, enchanted = false) {
-		this.#buttonArray.splice(slot, 1, [`stack#${Math.min(Math.max(stackSize, 1) || 1, 99).toString().padStart(2, '0')}§r${itemName ?? ''}§r${itemDesc?.length ? `\n§r${itemDesc.join('\n§r')}` : ''}`, ((typeIdToID.get(iconPath.startsWith('minecraft:') ? iconPath : 'minecraft:' + iconPath) * 65536) + (!!enchanted * 32768)) || iconPath
+		const ID = typeIdToID.get(iconPath.startsWith('minecraft:') ? iconPath : 'minecraft:' + iconPath)
+		this.#buttonArray.splice(slot, 1, [`stack#${Math.min(Math.max(stackSize, 1) || 1, 99).toString().padStart(2, '0')}§r${itemName ?? ''}§r${itemDesc?.length ? `\n§r${itemDesc.join('\n§r')}` : ''}`,
+		(((ID + (ID < 256 ? 0 : number_of_1_16_100_items)) * 65536) + (!!enchanted * 32768)) || iconPath
 		]);
 		return this;
 	}
