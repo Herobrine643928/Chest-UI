@@ -22,7 +22,7 @@ class ChestFormData {
 		return this;
 	}
 	button(slot, itemName, itemDesc, iconPath, stackSize = 1, enchanted = false) {
-		const ID = typeIdToID.get(iconPath.startsWith('minecraft:') ? iconPath : 'minecraft:' + iconPath)
+		const ID = typeIdToID.get(iconPath.includes(':') ? iconPath : 'minecraft:' + iconPath)
 		this.#buttonArray.splice(slot, 1, [`stack#${Math.min(Math.max(stackSize, 1) || 1, 99).toString().padStart(2, '0')}§r${itemName ?? ''}§r${itemDesc?.length ? `\n§r${itemDesc.join('\n§r')}` : ''}`,
 		(((ID + (ID < 256 ? 0 : number_of_1_16_100_items)) * 65536) + (!!enchanted * 32768)) || iconPath
 		]);

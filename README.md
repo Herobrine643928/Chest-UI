@@ -62,6 +62,11 @@ Find all item/block type ids [here](https://learn.microsoft.com/en-us/minecraft/
 
 All item images & semi-referenced ids can be found [here](https://imgur.com/a/GRLxkfx)
 
+Want to add custom items / blocks to the form?
+1. Download [this_pack](https://www.mediafire.com/file/53wlw5djaf3hd7m/ID_Testing.zip/file) to see all item IDs and their icons, including custom ones.
+2. Add the item typeId & ID to the `typeIds.js` file. Note that experimental items shift the vanilla IDs at 256- make sure to manually shift the IDs up, and remember the *full* typeId for your custom items!
+3. You cannot use the constant `number_of_1_16_100_items` if you chose to add your custom items. Set it to zero!
+
 ### Important!!!
 If you are using behaviour packs with items of format 1.16.100 or higher, vanilla item IDs are changed!
 To remedy this, navigate to `scripts/extensions/forms.js` and change the constant `number_of_1_16_100_items` to whatever number of 1.16.100+ custom items your applied pack(s) have.
