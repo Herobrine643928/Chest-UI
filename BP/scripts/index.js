@@ -24,6 +24,14 @@ function secondarymenu(player) {
 		.button(21, '§l§6Test Item 1', ['', '§r§7A testing item'], 'minecraft:magma_cream', 14)
 		.button(22, '§l§nTest Item 2', ['', '§r§7Another item'], 'textures/items/stick', 4)
 		.button(23, '§l§bTest Item 3', ['', '§r§7A third item'], 'minecraft:grass', 1, true)
+		.pattern([1, 2], [
+			'xxxxx',
+			'x___x',
+			'x___x',
+			'xxxxx',
+		], {
+			x: { data: { itemName: 'Pattern', itemDesc: ['§7This is a pattern!'], enchanted: false, stackAmount: 1 }, iconPath: 'minecraft:stained_glass_pane' },
+		})
 		.show(player).then(response => {
 			if (response.canceled) return;
 			if (response.selection === 0) return primaryMenu(player);
