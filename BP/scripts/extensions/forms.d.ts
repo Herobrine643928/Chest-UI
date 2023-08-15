@@ -35,8 +35,8 @@ declare class ChestFormData {
 				'x_______x',
 				'xxxxxxxxx'
 		], {
-			x:  { data: { itemName: '', itemDesc: [], enchanted: false, stackAmount: 1 }, icon: 'minecraft:stained_glass_pane' },
-			a:  { data: { itemName: 'Anvil', itemDesc: [], enchanted: true, stackAmount: 1 }, icon: 'minecraft:anvil'},
+			x:  { data: { itemName: '', itemDesc: [], enchanted: false, stackAmount: 1 }, iconPath: 'minecraft:stained_glass_pane' },
+			a:  { data: { itemName: 'Anvil', itemDesc: [], enchanted: true, stackAmount: 1 }, iconPath: 'minecraft:anvil'},
 		})
 	*/
 	pattern(from: [number, number], pattern: string[], key: { [key: string]: { data: { itemName?: string, itemDesc?: string[], stackSize?: number, enchanted?: boolean }, iconPath: string } }): ChestFormData;
