@@ -22,6 +22,25 @@ declare class ChestFormData {
 	 */
 	button(slot: number, itemName?: string, itemDesc?: string[], texture?: string, stackAmount?: number, enchanted?: boolean): ChestFormData;
 	/**
+	* Creates a slots based off of a strings and a key with the first slot being the cordinate that it starts
+	* @param {Array} from
+	* @param {string} pattern
+	* @param {{ [key: string]: { data: { itemName: string, itemDesc: string[], stackSize: number, enchanted: boolean }, iconPath: string } }} key
+	* @example
+	* gui.pattern([2, 1], [
+		    'xxxxxxxxx',
+            'x_______x',
+            'x___a___x',
+            'x_______x',
+            'x_______x',
+            'xxxxxxxxx'
+	   ], {
+		   x:  { data: { name: '', 'lore': [], 'enchanted': false, 'stackSize': 1, enchants: [] }, icon: 'minecraft:stained_glass_pane' },
+           a:  { data: { name: 'Anvil', 'lore': [], 'enchanted': true, 'stackSize': 1, enchants: [] }, icon: 'minecraft:anvil'},
+	   })
+	*/
+	pattern(from: [number, number], pattern: string[], key: { [key: string]: { data: { itemName: string, itemDesc: string[], stackSize: number, enchanted: boolean }, iconPath: string } }): ChestFormData;
+	/**
 	  * @remarks
 	  * Creates and shows this modal popup form. Returns
 	  * asynchronously when the player confirms or cancels the
