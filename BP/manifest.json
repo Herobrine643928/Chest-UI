@@ -30,7 +30,7 @@
 			"language": "javascript",
 			"entry": "scripts/index.js",
 			"uuid": "2fa09013-80e6-c43a-e1c7-73dafb30fdd0",
-			"version": "1.4.0-beta"
+			"version": "1.6.0-beta"
 		}
 	],
 	"metadata": {
@@ -43,7 +43,7 @@
 		{
 			"description": "@minecraft/server module dependency",
 			"module_name": "@minecraft/server",
-			"version": "1.4.0-beta"
+			"version": "1.6.0-beta"
 		},
 		{
 			"description": "@minecraft/server-ui module dependency",
