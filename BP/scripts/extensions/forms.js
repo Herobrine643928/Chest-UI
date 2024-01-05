@@ -34,8 +34,8 @@ class ChestFormData {
 		return this;
 	}
 	pattern(pattern, key) {
-		if (pattern.some(row => row.length !== 9)) return new SyntaxError(`Invalid pattern! All rows must be 9 characters long!`);
-		if (pattern.length !== this.slotCount / 9) return new SyntaxError(`Invalid pattern! Expected ${this.slotCount / 9} rows, got ${pattern.length}!`);
+		if (pattern.some(row => row.length !== 9)) return console.error(`Invalid pattern! All rows must be 9 characters long!`);
+		if (pattern.length !== this.slotCount / 9) return console.error(`Invalid pattern! Expected ${this.slotCount / 9} rows, got ${pattern.length}!`);
 		for (let i = 0; i < pattern.length; i++) {
 			const row = pattern[i];
 			for (let j = 0; j < row.length; j++) {
@@ -72,8 +72,8 @@ class ChestFormData {
 			form.button(button[0], button[1]?.toString());
 		})
 		const r = await form.show(player);
-		if (this.#callbackObject[r] !== undefined)
-			this.#callbackObject[r](r);
+		if (this.#callbackObject[r.selection] !== undefined)
+			this.#callbackObject[r.selection](r);
 		return r;
 	}
 }
