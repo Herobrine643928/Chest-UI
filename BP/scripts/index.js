@@ -1,4 +1,4 @@
-import { system, world } from '@minecraft/server';
+import { world } from '@minecraft/server';
 import { ChestFormData } from './extensions/forms.js';
 
 world.afterEvents.itemUse.subscribe(evd => {
@@ -6,35 +6,50 @@ world.afterEvents.itemUse.subscribe(evd => {
 	primaryMenu(evd.source);
 });
 function primaryMenu(player) {
-	new ChestFormData()
+	new ChestFormData("small")
 		.title('§l§aMain Menu')
-		.button(12, '§l§6Test Item 1', ['', '§r§7A testing item', 'Click any item!'], "minecraft:acacia_log")
-		.button(13, '§l§bTest Item 2', ['', '§r§7Another item', 'Click any item!'], "minecraft:gold_ore", 64, true)
-		.button(14, '§l§dTest Item 3', ['', '§r§7A third item', 'Click any item!'], "textures/items/diamond", 5)
-		.show(player).then(response => {
-			if (response.canceled) return;
-			world.sendMessage(`${player.name} has chosen item ${response.selection}`);
-			secondarymenu(player);
+		.pattern([
+			"---------",
+			"----o----",
+			"---------",
+		],
+		{
+			"-": {
+				iconPath: "textures/blocks/glass_black",
+				callback: () => primaryMenu(player)
+			},
+			"o": {
+				iconPath: "textures/blocks/glass_white",
+				itemName: "§l§6Secondary Menu",
+				itemDesc: ["§r§7Click to open the secondary menu!"],
+				callback: () => secondarymenu(player)
+			}
 		})
 };
 function secondarymenu(player) {
-	new ChestFormData('large')
+	const items = [
+		{ name: 'Test Item 1', texture: 'minecraft:acacia_log' },
+		{ name: 'Test Item 2', texture: 'minecraft:gold_ore' },
+		{ name: 'Test Item 3', texture: 'textures/items/diamond' }
+	]
+	const form = new ChestFormData('large')
 		.title('§l§5Secondary Menu')
 		.button(0, '§l§4Back', ['', '§r§cGo back a page!'], 'textures/blocks/barrier')
-		.button(21, '§l§6Test Item 1', ['', '§r§7A testing item'], 'minecraft:magma_cream', 14)
-		.button(22, '§l§nTest Item 2', ['', '§r§7Another item'], 'textures/items/stick', 4)
-		.button(23, '§l§bTest Item 3', ['', '§r§7A third item'], 'minecraft:grass', 1, true)
-		.pattern([1, 2], [
-			'xxxxx',
-			'x___x',
-			'x___x',
-			'xxxxx',
-		], {
-			x: { data: { itemName: 'Pattern', itemDesc: ['§7This is a pattern!'], enchanted: false, stackAmount: 1 }, iconPath: 'minecraft:stained_glass_pane' },
+		.button(21, '§l§6Test Item 1', ['', '§r§7A testing item'], 'minecraft:magma_cream', 14, true, (r) => {
+			player.sendMessage(`You clicked the first item!`)
 		})
-		.show(player).then(response => {
-			if (response.canceled) return;
-			if (response.selection === 0) return primaryMenu(player);
-			world.sendMessage(`${player.name} has chosen item ${response.selection}`);
+		.button(22, '§l§nTest Item 2', ['', '§r§7Another item'], 'textures/items/stick', 4, true, (r) => {
+			player.sendMessage(`You clicked the second item!`)
 		})
+		.button(23, '§l§bTest Item 3', ['', '§r§7A third item'], 'minecraft:grass', 1, true, (r) => {
+			player.sendMessage(`You clicked the third item!`)
+		})
+		.range([1, 0], [1, 8], (index, slot) => {
+			if (!items[index]) return;
+			const { name, texture } = items[index];
+			form.button(slot, name, [], texture, 1, true, () => {
+				player.sendMessage(`You clicked item ${index + 1}!`)
+			})
+		})
+		.show(player);
 };
