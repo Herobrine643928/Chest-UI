@@ -65,6 +65,6 @@ declare class ChestFormData {
 	  * @param player
 	  * Player to show this dialog to.
 	 */
-	show(player: import("@minecraft/server").Player): Promise<ActionFormResponse>;
+	show(player: import("@minecraft/server").Player): Promise<import("@minecraft/server-ui").ActionFormResponse>;
 }
 export { ChestFormData };
