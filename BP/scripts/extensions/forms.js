@@ -15,8 +15,7 @@ class ChestFormData {
 		this.#titleText = sizing[0];
 		/** @internal */
 		this.#buttonArray = [];
-		for (let i = 0; i < sizing[1]; i++)
-			this.#buttonArray.push(['', undefined]);
+		for (let i = 0; i < sizing[1]; i++) this.#buttonArray.push(['', undefined]);
 	}
 	title(text) {
 		this.#titleText += text;
@@ -25,9 +24,8 @@ class ChestFormData {
 	button(slot, itemName, itemDesc, iconPath, stackSize = 1, enchanted = false, callback = null) {
 		const ID = typeIdToID.get(iconPath.includes(':') ? iconPath : 'minecraft:' + iconPath)
 		this.#buttonArray.splice(slot, 1, [`stack#${Math.min(Math.max(stackSize, 1) || 1, 99).toString().padStart(2, '0')}§r${itemName ?? ''}§r${itemDesc?.length ? `\n§r${itemDesc.join('\n§r')}` : ''}`,
-		(((ID + (ID < 256 ? 0 : number_of_1_16_100_items)) * 65536) + (!!enchanted * 32768)) || iconPath
-		]); 
-       callback ? this.callbacks.set(slot, callback) : null;
+		(((ID + (ID < 256 ? 0 : number_of_1_16_100_items)) * 65536) + (!!enchanted * 32768)) || iconPath]); 
+                callback ? this.callbacks.set(slot, callback) : null;
 		return this;
 	}
 	pattern(from, pattern, key) {
@@ -55,7 +53,7 @@ class ChestFormData {
 			form.button(button[0], button[1]?.toString());
 		})
 		if (wait) return form.show(player).then(({cancelationReason, selection}) => {
-        if (cancelationReason === 'UserBusy') return this.show(player, true);
+                if (cancelationReason === 'UserBusy') return this.show(player, true);
 		this.callbacks.get(selection)?.(player, selection);
 		}); else return form.show(player)
 	}
