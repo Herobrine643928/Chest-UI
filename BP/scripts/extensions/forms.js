@@ -57,8 +57,8 @@ class ChestFormData {
 	}
 	range(from, to, callback = (loopIndex, slotID) => { console.warn(`No callback function provided for slot ${slotID} | ${loopIndex}!`) }, step = [1, 1]) {
 		let i = 0;
-		for (let x = from[0]; x <= to[0]; x += step[0]) {
-			for (let y = from[1]; y <= to[1]; y += step[1]) {
+		for (let y = from[1]; y <= to[1]; y += step[1]) {
+			for (let x = from[0]; x <= to[0]; x += step[0]) {
 				const slot = x + y * 9;
 				callback(i, slot);
 				i++;
