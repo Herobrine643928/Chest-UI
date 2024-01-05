@@ -25,6 +25,7 @@ function primaryMenu(player) {
 				callback: () => secondarymenu(player)
 			}
 		})
+		.show(player);
 };
 function secondarymenu(player) {
 	const items = [
