@@ -1,5 +1,5 @@
 import { world } from "@minecraft/server";
-import { ChestFormData } from "../Chestform/forms.js";
+import { ChestFormData } from './extensions/forms.js';
 
 world.afterEvents.itemUse.subscribe(({ source: player, itemStack: item }) => {
     if (item.typeId === 'minecraft:diamond') return ChestForm(player)
