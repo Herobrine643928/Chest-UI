@@ -46,5 +46,48 @@
 				}
 			}
 		]
+	},
+	"third_party_server_screen@common.base_screen": {
+		"type": "screen",
+		"size": [
+			"100%",
+			"100%"
+		],
+		"anchor_from": "top_left",
+		"anchor_to": "top_left",
+		"$screen_content": "server_form.main_screen_content",
+		"$screen_animations": [
+			"@server_form.exit_wait"
+		],
+		"$background_animations": [
+			"@server_form.exit_wait"
+		],
+		"force_render_below": true,
+		"low_frequency_rendering": true,
+		"load_screen_immediately": true,
+		"render_only_when_topmost": false,
+		"render_game_behind": true,
+		"button_mappings": [
+			{
+				"from_button_id": "button.menu_cancel",
+				"to_button_id": "button.menu_exit",
+				"mapping_type": "global"
+			}
+		]
+	},
+	"exit_wait": {
+		"anim_type": "offset",
+		"easing": "linear",
+		"duration": 0.08,
+		"from": [
+			0,
+			0
+		],
+		"to": [
+			0,
+			0
+		],
+		"play_event": "screen.exit_pop",
+		"end_event": "screen.exit_end"
 	}
 }
