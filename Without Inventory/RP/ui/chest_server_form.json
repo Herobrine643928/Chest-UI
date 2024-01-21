@@ -24,14 +24,14 @@
 		],
 		"controls": [
 			{
-				"small_chest_grid_image": {
+				"tiny_chest_grid_image": {
 					"type": "image",
 					"size": [
 						176,
-						80
+						44
 					],
-					"texture": "textures/ui/generic_27",
-					"$small_chest_flag": "§c§h§e§s§t§s§m§a§l§l",
+					"texture": "textures/ui/generic_5",
+					"$tiny_chest_flag": "§c§h§e§s§t§0§5",
 					"layer": 0,
 					"controls": [
 						{
@@ -46,7 +46,178 @@
 							}
 						},
 						{
-							"small_chest_grid": {
+							"chest_grid": {
+								"type": "grid",
+								"grid_dimensions": [
+									5,
+									1
+								],
+								"size": [
+									"100% - 86px",
+									"100% - 26px"
+								],
+								"offset": [
+									43,
+									21
+								],
+								"anchor_from": "top_left",
+								"anchor_to": "top_left",
+								"grid_item_template": "chest_ui.inventory_item",
+								"collection_name": "form_buttons",
+								"layer": 1
+							}
+						}
+					],
+					"bindings": [
+						{
+							"binding_name": "#title_text"
+						},
+						{
+							"binding_type": "view",
+							"source_property_name": "(not ((#title_text - $tiny_chest_flag) = #title_text))",
+							"target_property_name": "#visible"
+						}
+					]
+				}
+			},
+			{
+				"nine_chest_grid_image": {
+					"type": "image",
+					"size": [
+						176,
+						44
+					],
+					"texture": "textures/ui/generic_9",
+					"$nine_chest_flag": "§c§h§e§s§t§0§9",
+					"layer": 0,
+					"controls": [
+						{
+							"title_label@chest_ui.chest_label": {}
+						},
+						{
+							"close_button@common.close_button": {
+								"$close_button_offset": [
+									-2,
+									2
+								]
+							}
+						},
+						{
+							"chest_grid": {
+								"type": "grid",
+								"grid_dimensions": [
+									9,
+									1
+								],
+								"size": [
+									"100% - 14px",
+									"100% - 26px"
+								],
+								"offset": [
+									7,
+									21
+								],
+								"anchor_from": "top_left",
+								"anchor_to": "top_left",
+								"grid_item_template": "chest_ui.inventory_item",
+								"collection_name": "form_buttons",
+								"layer": 1
+							}
+						}
+					],
+					"bindings": [
+						{
+							"binding_name": "#title_text"
+						},
+						{
+							"binding_type": "view",
+							"source_property_name": "(not ((#title_text - $nine_chest_flag) = #title_text))",
+							"target_property_name": "#visible"
+						}
+					]
+				}
+			},
+			{
+				"eighteen_chest_grid_image": {
+					"type": "image",
+					"size": [
+						176,
+						62
+					],
+					"texture": "textures/ui/generic_18",
+					"$eighteen_chest_flag": "§c§h§e§s§t§1§8",
+					"layer": 0,
+					"controls": [
+						{
+							"title_label@chest_ui.chest_label": {}
+						},
+						{
+							"close_button@common.close_button": {
+								"$close_button_offset": [
+									-2,
+									2
+								]
+							}
+						},
+						{
+							"chest_grid": {
+								"type": "grid",
+								"grid_dimensions": [
+									9,
+									2
+								],
+								"size": [
+									"100% - 14px",
+									"100% - 26px"
+								],
+								"offset": [
+									7,
+									21
+								],
+								"anchor_from": "top_left",
+								"anchor_to": "top_left",
+								"grid_item_template": "chest_ui.inventory_item",
+								"collection_name": "form_buttons",
+								"layer": 1
+							}
+						}
+					],
+					"bindings": [
+						{
+							"binding_name": "#title_text"
+						},
+						{
+							"binding_type": "view",
+							"source_property_name": "(not ((#title_text - $eighteen_chest_flag) = #title_text))",
+							"target_property_name": "#visible"
+						}
+					]
+				}
+			},
+			{
+				"small_chest_grid_image": {
+					"type": "image",
+					"size": [
+						176,
+						80
+					],
+					"texture": "textures/ui/generic_27",
+					"$small_chest_flag": "§c§h§e§s§t§2§7",
+					"layer": 0,
+					"controls": [
+						{
+							"title_label@chest_ui.chest_label": {}
+						},
+						{
+							"close_button@common.close_button": {
+								"$close_button_offset": [
+									-2,
+									2
+								]
+							}
+						},
+						{
+							"chest_grid": {
 								"type": "grid",
 								"grid_dimensions": [
 									9,
@@ -81,6 +252,120 @@
 				}
 			},
 			{
+				"thirtysix_chest_grid_image": {
+					"type": "image",
+					"size": [
+						176,
+						98
+					],
+					"texture": "textures/ui/generic_36",
+					"$thirtysix_chest_flag": "§c§h§e§s§t§3§6",
+					"layer": 0,
+					"controls": [
+						{
+							"title_label@chest_ui.chest_label": {}
+						},
+						{
+							"close_button@common.close_button": {
+								"$close_button_offset": [
+									-2,
+									2
+								]
+							}
+						},
+						{
+							"chest_grid": {
+								"type": "grid",
+								"grid_dimensions": [
+									9,
+									4
+								],
+								"size": [
+									"100% - 14px",
+									"100% - 26px"
+								],
+								"offset": [
+									7,
+									21
+								],
+								"anchor_from": "top_left",
+								"anchor_to": "top_left",
+								"grid_item_template": "chest_ui.inventory_item",
+								"collection_name": "form_buttons",
+								"layer": 1
+							}
+						}
+					],
+					"bindings": [
+						{
+							"binding_name": "#title_text"
+						},
+						{
+							"binding_type": "view",
+							"source_property_name": "(not ((#title_text - $thirtysix_chest_flag) = #title_text))",
+							"target_property_name": "#visible"
+						}
+					]
+				}
+			},
+			{
+				"fourtyfive_chest_grid_image": {
+					"type": "image",
+					"size": [
+						176,
+						116
+					],
+					"texture": "textures/ui/generic_45",
+					"$fourtyfive_chest_flag": "§c§h§e§s§t§4§5",
+					"layer": 0,
+					"controls": [
+						{
+							"title_label@chest_ui.chest_label": {}
+						},
+						{
+							"close_button@common.close_button": {
+								"$close_button_offset": [
+									-2,
+									2
+								]
+							}
+						},
+						{
+							"chest_grid": {
+								"type": "grid",
+								"grid_dimensions": [
+									9,
+									5
+								],
+								"size": [
+									"100% - 14px",
+									"100% - 26px"
+								],
+								"offset": [
+									7,
+									21
+								],
+								"anchor_from": "top_left",
+								"anchor_to": "top_left",
+								"grid_item_template": "chest_ui.inventory_item",
+								"collection_name": "form_buttons",
+								"layer": 1
+							}
+						}
+					],
+					"bindings": [
+						{
+							"binding_name": "#title_text"
+						},
+						{
+							"binding_type": "view",
+							"source_property_name": "(not ((#title_text - $fourtyfive_chest_flag) = #title_text))",
+							"target_property_name": "#visible"
+						}
+					]
+				}
+			},
+			{
 				"large_chest_grid_image": {
 					"type": "image",
 					"size": [
@@ -88,7 +373,7 @@
 						134
 					],
 					"texture": "textures/ui/generic_54",
-					"$large_chest_flag": "§c§h§e§s§t§l§a§r§g§e",
+					"$large_chest_flag": "§c§h§e§s§t§5§4",
 					"layer": 0,
 					"controls": [
 						{
@@ -103,7 +388,7 @@
 							}
 						},
 						{
-							"large_chest_grid": {
+							"chest_grid": {
 								"type": "grid",
 								"grid_dimensions": [
 									9,
