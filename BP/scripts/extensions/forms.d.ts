@@ -23,7 +23,7 @@ declare class ChestFormData {
 	 * @param enchanted If the item is enchanted or not.
      * @param callback The callback function to run when the button is clicked.
 	 */
-	button(slot: number, itemName?: string, itemDesc?: string[], texture?: string, stackAmount?: number, enchanted?: boolean, callback?: (player: Player, number: number) => void): ChestFormData;
+	button(slot: number, itemName?: string, itemDesc?: string[], texture?: string, stackAmount?: number, enchanted?: boolean, callback?: (number: number) => void): ChestFormData;
 	/**
 	* @remarks Fills slots based off of strings and a key, with the first slot being the cordinate that the pattern starts at.
 	* @param from The starting coordinates of the pattern, in [row, column] format, starting from [0, 0] in the top left corner.
@@ -42,7 +42,7 @@ declare class ChestFormData {
 			a:  { data: { itemName: 'Anvil', itemDesc: [], enchanted: true, stackAmount: 1 }, iconPath: 'minecraft:anvil'},
 		})
 	*/
-	pattern(from: [number, number], pattern: string[], key: { [key: string]: { itemName?: string, itemDesc?: string[], stackSize?: number, enchanted?: boolean, iconPath: string, callback: (player: Player, slot: number) => void } }): ChestFormData;
+	pattern(from: [number, number], pattern: string[], key: { [key: string]: { itemName?: string, itemDesc?: string[], stackSize?: number, enchanted?: boolean, iconPath: string, callback: (slot: number) => void } }): ChestFormData;
 	/**
 	  * @remarks
 	  * Creates and shows this modal popup form. Returns
