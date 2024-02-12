@@ -54,7 +54,7 @@ class ChestFormData {
 		})
 		if (wait) return form.show(player).then(({cancelationReason, selection}) => {
                 if (cancelationReason === 'UserBusy') return this.show(player, true);
-		this.callbacks.get(selection)?.(player, selection);
+		this.callbacks.get(selection)?.(selection);
 		}); else return form.show(player)
 	}
 }
