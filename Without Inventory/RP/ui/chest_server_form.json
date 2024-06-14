@@ -467,11 +467,13 @@
 		],
 		"bindings": [
 			{
+				"binding_name": "#null",
 				"binding_type": "collection",
 				"binding_condition": "none",
 				"binding_collection_name": "form_buttons"
 			},
 			{
+				"binding_name": "#null",
 				"binding_type": "collection_details",
 				"binding_collection_name": "form_buttons"
 			},
@@ -481,6 +483,7 @@
 				"binding_collection_name": "form_buttons"
 			},
 			{
+				"binding_name": "#null",
 				"binding_type": "view",
 				"source_property_name": "(not (#form_button_text = ''))",
 				"target_property_name": "#visible"
@@ -659,11 +662,13 @@
 					"text": "#stack_size",
 					"bindings": [
 						{
+							"binding_name": "#null",
 							"binding_type": "collection",
 							"binding_condition": "none",
 							"binding_collection_name": "form_buttons"
 						},
 						{
+							"binding_name": "#null",
 							"binding_type": "collection_details",
 							"binding_collection_name": "form_buttons"
 						},
@@ -673,11 +678,13 @@
 							"binding_collection_name": "form_buttons"
 						},
 						{
+							"binding_name": "#null",
 							"binding_type": "view",
 							"source_property_name": "((#form_button_text - 'stack#01') = #form_button_text)",
 							"target_property_name": "#visible"
 						},
 						{
+							"binding_name": "#null",
 							"binding_type": "view",
 							"source_property_name": "(('§z') + (('%.8s' * #form_button_text) - ('%.6s' * #form_button_text)))",
 							"target_property_name": "#stack_size"
