@@ -1168,6 +1168,7 @@ export const typeIdToID = new Map([
 	['minecraft:diamond_shovel', 323],
 	['minecraft:diamond_pickaxe', 324],
 	['minecraft:diamond_axe', 325],
+	['minecraft:mace', 326],
 	['minecraft:stick', 327],
 	['minecraft:bowl', 328],
 	['minecraft:golden_sword', 329],
