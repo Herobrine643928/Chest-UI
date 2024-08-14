@@ -32,7 +32,7 @@ class ChestFormData {
 	button(slot, itemName, itemDesc, texture, stackSize = 1, enchanted = false) {
 		const ID = typeIdToDataId.get(texture) ?? typeIdToID.get(texture);
 		this.#buttonArray.splice(slot, 1, [`stack#${Math.min(Math.max(stackSize, 1) || 1, 99).toString().padStart(2, '0')}§r${itemName ?? ''}§r${itemDesc?.length ? `\n§r${itemDesc.join('\n§r')}` : ''}`,
-		(((ID + (ID < 256 ? 0 : number_of_1_16_100_items)) * 65536) + (!!enchanted * 32768)) || texture
+		(((ID + (ID < 260 ? 0 : number_of_1_16_100_items)) * 65536) + (!!enchanted * 32768)) || texture
 		]);
 		return this;
 	}
