@@ -73,9 +73,8 @@ To remedy this, navigate to `scripts/extensions/forms.js` and change the constan
 
 # Future Ideas
 
-- Functioning inventory section (it’s just for looks at the moment)
-- Customizable background (Using the vanilla ui nineslice, as right now it’s just a static texture)
-- Dynamic sizing based on number of buttons, in rows of 9 at a time.
+- Functioning inventory section (it’s just for looks at the moment) (feels impossible to do and most probably is)
+- Dynamic sizing based on number of buttons, in rows of 9 at a time (complex and probably have to rewrite everything)
 
 # Credits
 
