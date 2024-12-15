@@ -22,9 +22,10 @@ declare class ChestFormData {
 	 * @param itemDesc The item's lore to display.
 	 * @param texture The type ID or the path to the texture. **YOU MUST INCLUDE THE ITEM PREFIX!** For vanilla it is `minecraft:`. Check `typeIds.js` for valid items & data values.
 	 * @param stackAmount The stack size for the item. Clamped between 1 & 99.
+	 * @param durability Durability for the item. Default=0. Clamped between 1 & 99.
 	 * @param enchanted If the item is enchanted or not.
 	 */
-	button(slot: number, itemName?: string, itemDesc?: string[], texture?: string, stackAmount?: number, enchanted?: boolean): ChestFormData;
+	button(slot: number, itemName?: string, itemDesc?: string[], texture?: string,  stackAmount?: number, durability?: number, enchanted?: boolean): ChestFormData;
 	/**
 	* @remarks Fills slots based off of strings and a key, with the first slot being the cordinate that the pattern starts at.
 	* @param pattern The pattern to use, with characters not defined in key being left empty.
@@ -42,7 +43,7 @@ declare class ChestFormData {
 			a:  { itemName: 'Anvil', itemDesc: [], enchanted: true, stackAmount: 16, texture: 'minecraft:anvil'},
 		})
 	*/
-	pattern(pattern: string[], key: { [key: string]: { itemName?: string, itemDesc?: string[], stackSize?: number, enchanted?: boolean, texture: string } }): ChestFormData;
+	pattern(pattern: string[], key: { [key: string]: { itemName?: string, itemDesc?: string[], stackSize?: number, enchanted?: boolean, durability?: number, texture: string } }): ChestFormData;
 	/**
 	  * @remarks
 	  * Creates and shows this modal popup form. Returns

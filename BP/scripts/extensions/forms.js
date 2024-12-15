@@ -29,9 +29,9 @@ class ChestFormData {
 		this.#titleText += text;
 		return this;
 	}
-	button(slot, itemName, itemDesc, texture, stackSize = 1, enchanted = false) {
+	button(slot, itemName, itemDesc, texture, stackSize = 1, durability = 0, enchanted = false) {
 		const ID = typeIdToDataId.get(texture) ?? typeIdToID.get(texture);
-		this.#buttonArray.splice(slot, 1, [`stack#${Math.min(Math.max(stackSize, 1) || 1, 99).toString().padStart(2, '0')}§r${itemName ?? ''}§r${itemDesc?.length ? `\n§r${itemDesc.join('\n§r')}` : ''}`,
+		this.#buttonArray.splice(slot, 1, [`stack#${Math.min(Math.max(stackSize, 1) || 1, 99).toString().padStart(2, '0')}dur#${Math.min(Math.max(durability, 0) || 0, 99).toString().padStart(2, '0')}§r${itemName ?? ''}§r${itemDesc?.length ? `\n§r${itemDesc.join('\n§r')}` : ''}`,
 		(((ID + (ID < 262 ? 0 : number_of_1_16_100_items)) * 65536) + (!!enchanted * 32768)) || texture
 		]);
 		return this;
@@ -45,7 +45,7 @@ class ChestFormData {
 					const slot = j + i * 9;
 					const data = key[letter];
 					const ID = typeIdToDataId.get(data.texture) ?? typeIdToID.get(data.texture);
-					this.#buttonArray.splice(slot, 1, [`stack#${Math.min(Math.max(data?.stackAmount ?? 1, 1) || 1, 99).toString().padStart(2, '0')}§r${data?.itemName ?? ''}§r${data?.itemDesc?.length ? `\n§r${data?.itemDesc.join('\n§r')}` : ''}`,
+					this.#buttonArray.splice(slot, 1, [`stack#${Math.min(Math.max(data?.stackAmount ?? 1, 1) || 1, 99).toString().padStart(2, '0')}dur#${Math.min(Math.max(data?.durability, 0) || 0, 99).toString().padStart(2, '0')}§r${data?.itemName ?? ''}§r${data?.itemDesc?.length ? `\n§r${data?.itemDesc.join('\n§r')}` : ''}`,
 					(((ID + (ID < 262 ? 0 : number_of_1_16_100_items)) * 65536) + (!!data?.enchanted * 32768)) || data.texture
 					])
 				}

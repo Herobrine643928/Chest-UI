@@ -16,6 +16,7 @@ A Minecraft: Bedrock Script API pack that alters the Action Form UI to look & fu
 - Easy to read
 - Good for large numbers of buttons
 - Supports enchanted items and isometric blocks
+- Supports durability
 
 **For Pack's additional features/add-ons, visit the `additional-features` branch.**
 
@@ -41,7 +42,7 @@ form.title('Form Title')
 Add buttons!
 ```js
 form.button(0, 'Button Name', ['Button Lore'], 'minecraft:diamond', 10)
-form.button(2, 'Button Name', ['Button Lore'], 'textures/items/my_custom_item', 6)
+form.button(2, 'Button Name', ['Button Lore'], 'textures/items/my_custom_item', 6, 60)
 ```
 The parameters for the button are as follows:
 1. Location. The slot that the item will display in, starting from zero. Max of 26 for a small chest, or 53 for a large.
@@ -49,7 +50,8 @@ The parameters for the button are as follows:
 3. Lore. An array of strings which will display below the item's name.
 4. Texture. Item/block type id or path to the texture. Can be used like `minecraft:cake` or `minecraft:acacia_log` (A namespace of `minecraft:` will be assumed if not specified). For custom textures, specify the path of the texture (Must include `textures/` at the start of the path)
 5. Stack size. This is an optional parameter, and will default to 1. Displays a small number in the lower right-hand corner- useful for shops selling multiple of an item at once!
-6. Enchanted. This is an optional parameter, and will default to false. Displays the enchant glint effect on the item/block rendered if using the type id. This parameter will not work if using a custom textures path (`textures/...`)
+6. Durability. This is an optional parameter, and will default to 0. Supports value between 0 and 99. Displays the durability that can set using the form interface- useful for tools and in general for looks.
+7. Enchanted. This is an optional parameter, and will default to false. Displays the enchant glint effect on the item/block rendered if using the type id. This parameter will not work if using a custom textures path (`textures/...`)
 
 Show it to the player & get a response
 ```js
