@@ -1,0 +1,2 @@
+*.json linguist-detectable=true
+test/**/*.json linguist-vendored=true
