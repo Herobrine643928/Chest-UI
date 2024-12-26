@@ -2,9 +2,11 @@ import { ActionFormData } from '@minecraft/server-ui';
 import { typeIdToDataId, typeIdToID } from './typeIds.js';
 
 const number_of_1_16_100_items = 0;
+// Add custom sizes defined in UI:
 const sizes = new Map([
 	['single', ['§c§h§e§s§t§2§7§r', 27]], ['small', ['§c§h§e§s§t§2§7§r', 27]],
 	['double', ['§c§h§e§s§t§5§4§r', 54]], ['large', ['§c§h§e§s§t§5§4§r', 54]],
+	['1', ['§c§h§e§s§t§0§1§r', 1]],
 	['5', ['§c§h§e§s§t§0§5§r', 5]],
 	['9', ['§c§h§e§s§t§0§9§r', 9]],
 	['18', ['§c§h§e§s§t§1§8§r', 18]],
@@ -21,8 +23,9 @@ class ChestFormData {
 		this.#titleText = sizing[0];
 		/** @internal */
 		this.#buttonArray = [];
-		for (let i = 0; i < sizing[1]; i++)
-			this.#buttonArray.push(['', undefined]);
+		for (let i = 0; i < sizing[1]; i++) {
+			this.#buttonArray.push(['', undefined])
+		};
 		this.slotCount = sizing[1];
 	}
 	title(text) {

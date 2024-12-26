@@ -69,14 +69,22 @@ Want to add custom items / blocks to the form?
 2. Add the item typeId & ID to the `typeIds.js` file. Note that experimental items shift the vanilla IDs at 256- make sure to manually shift the IDs up, and remember the *full* typeId for your custom items!
 3. You cannot use the constant `number_of_1_16_100_items` if you chose to add your custom items. Set it to zero!
 
+Want Dynamic Sizing/Custom Number of Slots?
+
+If you want custom chest slots sizes, you have to add controls to `"chest_panel"` in `chest_server_form.json` in the format like the ones that already exist. Then you have to edit `forms.js`, and add you condition and identifier to `sizes` map/array following the format using which how pre-defined sizes are added.
+
+Want to edit the texture?
+
+Open `chest_server_form.jsson` and search and change `$background` (ninesliced) variable.
+
 ### Important!!!
 If you are using behaviour packs with items of format 1.16.100 or higher, vanilla item IDs are changed!
 To remedy this, navigate to `scripts/extensions/forms.js` and change the constant `number_of_1_16_100_items` to whatever number of 1.16.100+ custom items your applied pack(s) have.
 
 # Future Ideas
 
-- Functioning inventory section (it’s just for looks at the moment) (feels impossible to do and most probably is)
-- Dynamic sizing based on number of buttons, in rows of 9 at a time (complex and probably have to rewrite everything)
+- Functioning inventory section (it’s just for looks at the moment) (feels impossible to do)
+- ~~Dynamic sizing based on number of buttons, in rows of 9 at a time (complex and probably have to rewrite everything)~~ Done.
 
 # Credits
 

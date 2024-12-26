@@ -32,7 +32,6 @@
 			},
 			{
 				"chest_ui@chest_ui.chest_panel": {
-					"layer": 2,
 					"bindings": [
 						{
 							"binding_name": "#title_text"

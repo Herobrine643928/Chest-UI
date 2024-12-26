@@ -1,13 +1,15 @@
 import { system, world } from '@minecraft/server';
 import { ChestFormData } from './extensions/forms.js';
+import { ActionFormData } from '@minecraft/server-ui';
 
 world.afterEvents.itemUse.subscribe(evd => {
 	if (evd.itemStack.typeId !== 'minecraft:compass') return;
 	primaryMenu(evd.source);
+
 });
 function primaryMenu(player) {
 	new ChestFormData('9')
-		.title('§l§aMain Menu')
+		.title('Main Menu')
 		.button(1, '§l§3Test Item 1', ['', '§r§7A testing item', 'Click any item!'], 'minecraft:filled_end_portal_frame', 2)
 		.button(4, '§l§bIron Pick', ['', '§r§7Another item', 'Click any item!'], 'minecraft:iron_pickaxe', 1, 60, true)
 		.button(7, '§l§dTest Item 3', ['', '§r§7A third item', 'Click any item!'], 'textures/items/diamond', 1)
