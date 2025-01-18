@@ -83,6 +83,7 @@
                 "target_property_name": "#visible"
             }
         ],
+        "$show_inventory|default": true, // Set to false if don't want to show inventory
         "controls": [
             {
                 "background": {
@@ -144,21 +145,28 @@
                                                     }
                                                 },
                                                 {
-                                                    "inventory_label@chest_ui.inventory_label": {}
+                                                    "inventory_label@chest_ui.inventory_label": {
+                                                        "ignored": "(not $show_inventory)"
+                                                    }
                                                 },
                                                 {
-                                                    "inventory_items@chest_ui.inventory_items": {}
+                                                    "inventory_items@chest_ui.inventory_items": {
+                                                        "ignored": "(not $show_inventory)"
+                                                    }
                                                 },
                                                 {
                                                     "gap3@common.empty_panel": {
                                                         "size": [
                                                             0,
                                                             3
-                                                        ]
+                                                        ],
+                                                        "ignored": "(not $show_inventory)"
                                                     }
                                                 },
                                                 {
-                                                    "hotbar_items@chest_ui.hotbar_items": {}
+                                                    "hotbar_items@chest_ui.hotbar_items": {
+                                                        "ignored": "(not $show_inventory)"
+                                                    }
                                                 }
                                             ]
                                         }
