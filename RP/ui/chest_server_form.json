@@ -83,7 +83,6 @@
                 "target_property_name": "#visible"
             }
         ],
-        "$show_inventory|default": true, // Set to false if don't want to show inventory
         "controls": [
             {
                 "background": {

@@ -4,16 +4,8 @@
 		"name": "Chest UI",
 		"description": "Chest UI",
 		"uuid": "792bede7-337e-41e9-09c3-dd20395d1263",
-		"version": [
-			1,
-			4,
-			0
-		],
-		"min_engine_version": [
-			1,
-			17,
-			0
-		]
+		"version": [ 1, 4, 0 ],
+		"min_engine_version": [ 1, 17, 0 ]
 	},
 	"metadata": {
 		"authors": [
@@ -25,11 +17,13 @@
 		{
 			"type": "resources",
 			"uuid": "2053726d-0fdb-60e3-6783-797d42c52f5e",
-			"version": [
-				1,
-				0,
-				0
-			]
+			"version": [ 1, 0, 0 ]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "ebb30f49-f27e-4da7-db55-cc166d3aa425",
+			"version": [ 1, 0, 0 ]
 		}
 	]
 }

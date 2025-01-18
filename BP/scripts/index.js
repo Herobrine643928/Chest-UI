@@ -1,12 +1,11 @@
-import { system, world } from '@minecraft/server';
+import { world } from '@minecraft/server';
 import { ChestFormData } from './extensions/forms.js';
-import { ActionFormData } from '@minecraft/server-ui';
 
 world.afterEvents.itemUse.subscribe(evd => {
 	if (evd.itemStack.typeId !== 'minecraft:compass') return;
 	primaryMenu(evd.source);
-
 });
+
 function primaryMenu(player) {
 	new ChestFormData('9')
 		.title('Main Menu')
@@ -19,13 +18,15 @@ function primaryMenu(player) {
 			secondarymenu(player);
 		})
 };
+
 function secondarymenu(player) {
 	new ChestFormData('large')
 		.title('§l§5Secondary Menu')
 		.button(0, '§l§4Back', ['', '§r§cGo back a page!'], 'textures/blocks/barrier')
 		.button(21, '§l§6Test Item 1', ['', '§r§7A testing item'], 'minecraft:magma_cream', 14)
 		.button(22, '§l§nTest Item 2', ['', '§r§7Another item'], 'textures/items/netherite_axe', 1, 10)
-		.button(23, '§l§bTest Item 3', ['', '§r§7A third item'], 'minecraft:gold_block', 64, 0, true)
+		.button(23, '§l§bTest Item 3', ['', '§r§7A third item'], 'custom:block', 64, 0, true)
+		.button(30, '§l§2Test Item 4', ['', '§r§7A fourth item'], 'custom:item', 64, 0, true)
 		.pattern([
 			'_________',
 			'__xxxxx__',

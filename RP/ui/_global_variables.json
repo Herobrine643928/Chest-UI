@@ -1,0 +1,3 @@
+{
+	"$show_inventory|default": true // Set to false if don't want to show inventory
+}
