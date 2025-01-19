@@ -14,7 +14,8 @@
         "color": "$title_text_color",
         "layer": 2,
         "anchor_from": "bottom_left",
-        "anchor_to": "bottom_left"
+        "anchor_to": "bottom_left",
+	"ignored": "(not $show_inventory)"
     },
     "grid_items": {
         "type": "grid",
@@ -46,7 +47,8 @@
             0
         ],
         "grid_item_template": "chest_ui.cell",
-        "layer": 1
+        "layer": 1,
+	"ignored": "(not $show_inventory)"
     },
     "hotbar_items": {
         "type": "grid",
@@ -63,7 +65,8 @@
             0
         ],
         "grid_item_template": "chest_ui.cell",
-        "layer": 1
+        "layer": 1,
+	"ignored": "(not $show_inventory)"
     },
     "chest_ui_template": {
         "type": "panel",
@@ -71,7 +74,6 @@
             "100%c",
             "100%c"
         ],
-        "$background|default": "textures/ui/dialog_background_opaque", // edit this for custom design
         "bindings": [
             {
                 "binding_name": "#title_text",
@@ -87,7 +89,7 @@
             {
                 "background": {
                     "type": "image",
-                    "texture": "$background",
+                    "texture": "$border_and_background_texture",
                     "layer": 0,
                     "size": [ // this line took a decade to figure out
                         "100%c + 14px",
@@ -144,14 +146,10 @@
                                                     }
                                                 },
                                                 {
-                                                    "inventory_label@chest_ui.inventory_label": {
-                                                        "ignored": "(not $show_inventory)"
-                                                    }
+                                                    "inventory_label@chest_ui.inventory_label": {}
                                                 },
                                                 {
-                                                    "inventory_items@chest_ui.inventory_items": {
-                                                        "ignored": "(not $show_inventory)"
-                                                    }
+                                                    "inventory_items@chest_ui.inventory_items": {}
                                                 },
                                                 {
                                                     "gap3@common.empty_panel": {
@@ -159,13 +157,11 @@
                                                             0,
                                                             3
                                                         ],
-                                                        "ignored": "(not $show_inventory)"
+							"ignored": "(not $show_inventory)"
                                                     }
                                                 },
                                                 {
-                                                    "hotbar_items@chest_ui.hotbar_items": {
-                                                        "ignored": "(not $show_inventory)"
-                                                    }
+                                                    "hotbar_items@chest_ui.hotbar_items": {}
                                                 }
                                             ]
                                         }

@@ -1,3 +1,4 @@
 {
-	"$show_inventory|default": true // Set to false if don't want to show inventory
+	"$show_inventory": true, // Set to false if don't want to show inventory
+	"$border_and_background_texture": "textures/ui/dialog_background_opaque" // Add your own texture for background and border here. Edit `textures/ui/item_background` to change slot texture.
 }
