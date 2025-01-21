@@ -45,7 +45,7 @@ class ChestFormData {
 	constructor(size = 'small') {
 		const sizing = sizes.get(size) ?? ['§c§h§e§s§t§2§7§r', 27];
 		/** @internal */
-		this.#titleText = sizing[0];
+		this.#titleText = { rawtext: [{ text: `${sizing[0]}` }] };
 		/** @internal */
 		this.#buttonArray = [];
 		for (let i = 0; i < sizing[1]; i++) {
@@ -54,14 +54,69 @@ class ChestFormData {
 		this.slotCount = sizing[1];
 	}
 	title(text) {
-		this.#titleText += text;
+		if (typeof (text) === 'string') {
+			this.#titleText.rawtext.push({
+				text: `${text}`
+			})
+		} else if (typeof (text) === 'object') {
+			if (!text.rawtext) {
+				this.#titleText.rawtext.push({
+					text: ''
+				})
+			}
+			else {
+				text.rawtext.forEach((obj) => {
+					this.#titleText.rawtext.push(obj)
+				})
+			}
+		}
+		else {
+			this.#titleText.rawtext.push({
+				text: ''
+			})
+		}
 		return this;
 	}
 	button(slot, itemName, itemDesc, texture, stackSize = 1, durability = 0, enchanted = false) {
 		const targetTexture = custom_content_keys.has(texture) ? custom_content[texture]?.texture : texture;
 		const ID = typeIdToDataId.get(targetTexture) ?? typeIdToID.get(targetTexture);
-		this.#buttonArray.splice(slot, 1, [`stack#${Math.min(Math.max(stackSize, 1) || 1, 99).toString().padStart(2, '0')}dur#${Math.min(Math.max(durability, 0) || 0, 99).toString().padStart(2, '0')}§r${itemName ?? ''}§r${itemDesc?.length ? `\n§r${itemDesc.join('\n§r')}` : ''}`,
-		(((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) + (!!enchanted * 32768)) || targetTexture
+		let buttonRawtext = {
+			rawtext: [
+				{
+					text: `stack#${Math.min(Math.max(stackSize, 1) || 1, 99).toString().padStart(2, '0')}dur#${Math.min(Math.max(durability, 0) || 0, 99).toString().padStart(2, '0')}§r`
+				}
+			]
+		}
+		if (typeof (itemName) === 'string') {
+			buttonRawtext.rawtext.push({ text: itemName ? itemName + '§r' : '§r' })
+		} else if (typeof (itemName) === 'object') {
+			if (!itemName.rawtext) { buttonRawtext.rawtext.push({ text: '§r' }) }
+			else {
+				itemName.rawtext.forEach((obj) => {
+					buttonRawtext.rawtext.push(obj)
+				})
+				buttonRawtext.rawtext.push({ text: '§r' })
+			}
+		} else { return }
+
+		if (itemDesc?.length) {
+			itemDesc.forEach((obj) => {
+				if (typeof (obj) === 'string') {
+					buttonRawtext.rawtext.push({ text: `\n${obj}` })
+				} else if (typeof (obj) === "object") {
+					if (!obj.rawtext) { buttonRawtext.rawtext.push({ text: `\n` }) }
+					else {
+						obj.rawtext.forEach((desc) => {
+							buttonRawtext.rawtext.push({ text: `\n` })
+							buttonRawtext.rawtext.push(desc)
+						})
+					}
+				} else { return }
+			})
+		}
+		this.#buttonArray.splice(slot, 1, [
+			buttonRawtext,
+			(((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) + (!!enchanted * 32768)) || targetTexture
 		]);
 		return this;
 	}
@@ -75,7 +130,41 @@ class ChestFormData {
 					const data = key[letter];
 					const targetTexture = custom_content_keys.has(data.texture) ? custom_content[data.texture]?.texture : data.texture;
 					const ID = typeIdToDataId.get(targetTexture) ?? typeIdToID.get(targetTexture);
-					this.#buttonArray.splice(slot, 1, [`stack#${Math.min(Math.max(data?.stackAmount ?? 1, 1) || 1, 99).toString().padStart(2, '0')}dur#${Math.min(Math.max(data?.durability, 0) || 0, 99).toString().padStart(2, '0')}§r${data?.itemName ?? ''}§r${data?.itemDesc?.length ? `\n§r${data?.itemDesc.join('\n§r')}` : ''}`,
+					let buttonRawtext = {
+						rawtext: [
+							{
+								text: `stack#${Math.min(Math.max(data?.stackAmount ?? 1, 1) || 1, 99).toString().padStart(2, '0')}dur#${Math.min(Math.max(data?.durability, 0) || 0, 99).toString().padStart(2, '0')}§r`
+							}
+						]
+					}
+					if (typeof (data?.itemName) === 'string') {
+						buttonRawtext.rawtext.push({ text: data?.itemName ? data?.itemName + '§r' : '§r' })
+					} else if (typeof (data?.itemName) === 'object') {
+						if (!data?.itemName.rawtext) { buttonRawtext.rawtext.push({ text: '§r' }) }
+						else {
+							data?.itemName.rawtext.forEach((obj) => {
+								buttonRawtext.rawtext.push(obj)
+							})
+							buttonRawtext.rawtext.push({ text: '§r' })
+						}
+					} else { return }
+			
+					if (data?.itemDesc?.length) {
+						data?.itemDesc?.forEach((obj) => {
+							if (typeof (obj) === 'string') {
+								buttonRawtext.rawtext.push({ text: `\n${obj}` })
+							} else if (typeof (obj) === "object") {
+								if (!obj.rawtext) { buttonRawtext.rawtext.push({ text: `\n` }) }
+								else {
+									obj.rawtext.forEach((desc) => {
+										buttonRawtext.rawtext.push({ text: `\n` })
+										buttonRawtext.rawtext.push(desc)
+									})
+								}
+							} else { return }
+						})
+					}
+					this.#buttonArray.splice(slot, 1, [buttonRawtext,
 					(((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) + (!!data?.enchanted * 32768)) || targetTexture
 					])
 				}
