@@ -77,10 +77,12 @@ Open `chest_server_form.json` and search and change `$background` (ninesliced) v
 
 - Functioning inventory section (it’s just for looks at the moment) (feels impossible to do)
 - ~~Dynamic sizing based on number of buttons, in rows of 9 at a time (complex and probably have to rewrite everything)~~ Done.
-- Rawtext component support for form text (useful for translations to other languages).
+- ~~Rawtext component support for form text (useful for translations to other languages)~~ Done.
 
 # Credits
 
 Original pack created by [LeGend077](https://github.com/LeGend077).
+
 Maintained by [Herobrine64](https://discord.com/users/330740982117302283) & [LeGend077](https://discord.com/users/695712100072292482).
+
 Pattern function created by [Aex66](https://github.com/Aex66).
