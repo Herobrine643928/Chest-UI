@@ -7,6 +7,7 @@ import { typeIdToDataId, typeIdToID } from './typeIds.js';
  * ...or reference a texture path, which removes enchant glint and 3d block render capability.
  */
 const custom_content = {
+	/*
 	'custom:block': {
 		texture: 'minecraft:gold_block',
 		type: 'block'
@@ -15,6 +16,7 @@ const custom_content = {
 		texture: 'textures/items/paper',
 		type: 'item'
 	},
+	*/
 };
 //Blocks are excluded from the count, as they do not shift vanilla IDs.
 const number_of_custom_items = Object.values(custom_content).filter(v => v.type === 'item').length;
@@ -148,7 +150,7 @@ class ChestFormData {
 							buttonRawtext.rawtext.push({ text: '§r' })
 						}
 					} else { return }
-			
+
 					if (data?.itemDesc?.length) {
 						data?.itemDesc?.forEach((obj) => {
 							if (typeof (obj) === 'string') {
@@ -165,7 +167,7 @@ class ChestFormData {
 						})
 					}
 					this.#buttonArray.splice(slot, 1, [buttonRawtext,
-					(((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) + (!!data?.enchanted * 32768)) || targetTexture
+						(((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) + (!!data?.enchanted * 32768)) || targetTexture
 					])
 				}
 			}
