@@ -3,9 +3,9 @@
 	"header": {
 		"name": "Chest UI",
 		"description": "Chest UI",
-		"uuid": "ebb80f49-f27e-4da7-db55-cc166d3aa425",
-		"version": [ 1, 0, 0 ],
-		"min_engine_version": [ 1, 18, 0 ]
+		"uuid": "ebb30f49-f27e-4da7-db55-cc166d3aa425",
+		"version": [ 1, 1, 0 ],
+		"min_engine_version": [ 1, 21, 0 ]
 	},
 	"modules": [
 		{
@@ -35,7 +35,7 @@
 		{
 			"description": "@minecraft/server module dependency",
 			"module_name": "@minecraft/server",
-			"version": "1.16.0"
+			"version": "1.17.0"
 		},
 		{
 			"description": "@minecraft/server-ui module dependency",

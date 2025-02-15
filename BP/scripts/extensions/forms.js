@@ -1,5 +1,6 @@
 import { ActionFormData } from '@minecraft/server-ui';
 import { typeIdToDataId, typeIdToID } from './typeIds.js';
+import { BlockTypes, Container, EntityInventoryComponent, ItemDurabilityComponent } from '@minecraft/server';
 
 /**
  * Defines the custom block & item IDs for the form.
@@ -113,7 +114,7 @@ class ChestFormData {
 							buttonRawtext.rawtext.push(desc)
 						})
 					}
-				} else { return }
+				}
 			})
 		}
 		this.#buttonArray.splice(slot, 1, [
@@ -163,7 +164,7 @@ class ChestFormData {
 										buttonRawtext.rawtext.push(desc)
 									})
 								}
-							} else { return }
+							}
 						})
 					}
 					this.#buttonArray.splice(slot, 1, [buttonRawtext,
@@ -180,6 +181,44 @@ class ChestFormData {
 		this.#buttonArray.forEach(button => {
 			form.button(button[0], button[1]?.toString());
 		})
+
+		/**
+		 * @type {Container} inventory
+		 */
+		const container = player.getComponent('minecraft:inventory').container;
+
+		for (let i = 0; i < container.size; i++) {
+			if (container.getItem(i)) {
+				const item = container.getItem(i);
+				const targetTexture = custom_content_keys.has(item.typeId) ? custom_content[texture]?.texture : item.typeId;
+				const ID = typeIdToDataId.get(targetTexture) ?? typeIdToID.get(targetTexture);
+				const durability = item.getComponent('minecraft:durability');
+				const durDamage = durability ? Math.round((durability.maxDurability - durability.damage) / durability.maxDurability * 99) : 0;
+
+				const amount = item.amount;
+				const itemName = () => {
+					return item.typeId.split(":")
+						.pop()
+						.replace(/_/g, " ")
+						.replace(/\b\w/g, char => char.toUpperCase());
+				}
+
+				let buttonRawtext = {
+					rawtext: [
+						{
+							text: `stack#${amount.toString().padStart(2, '0')}dur#${Math.min(Math.max(durDamage, 0) || 0, 99).toString().padStart(2, '0')}§r${itemName()}`
+						}
+					]
+				}
+				item.getLore().forEach((obj) => {
+					buttonRawtext.rawtext.push({ text: `\n${obj}` })
+				})
+
+				form.button(buttonRawtext, `${((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) || targetTexture}`)
+			} else {
+				form.button('')
+			}
+		}
 		return form.show(player)
 	}
 }

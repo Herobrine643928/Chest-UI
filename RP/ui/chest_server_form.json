@@ -8,15 +8,6 @@
         "anchor_from": "bottom_left",
         "anchor_to": "bottom_left"
     },
-    "inventory_label": {
-        "type": "label",
-        "text": "container.inventory",
-        "color": "$title_text_color",
-        "layer": 2,
-        "anchor_from": "bottom_left",
-        "anchor_to": "bottom_left",
-	"ignored": "(not $show_inventory)"
-    },
     "grid_items": {
         "type": "grid",
         "size": [
@@ -32,42 +23,7 @@
         "collection_name": "form_buttons",
         "layer": 1
     },
-    "inventory_items": {
-        "type": "grid",
-        "size": [
-            "100%",
-            "default"
-        ],
-        "grid_dimensions": [
-            9,
-            3
-        ],
-        "offset": [
-            0,
-            0
-        ],
-        "grid_item_template": "chest_ui.cell",
-        "layer": 1,
-	"ignored": "(not $show_inventory)"
-    },
-    "hotbar_items": {
-        "type": "grid",
-        "size": [
-            "100%",
-            "default"
-        ],
-        "grid_dimensions": [
-            9,
-            1
-        ],
-        "offset": [
-            0,
-            0
-        ],
-        "grid_item_template": "chest_ui.cell",
-        "layer": 1,
-	"ignored": "(not $show_inventory)"
-    },
+    
     "chest_ui_template": {
         "type": "panel",
         "size": [
@@ -146,10 +102,10 @@
                                                     }
                                                 },
                                                 {
-                                                    "inventory_label@chest_ui.inventory_label": {}
+                                                    "inventory_label@chest_ui_inventory_system.inventory_label": {}
                                                 },
                                                 {
-                                                    "inventory_items@chest_ui.inventory_items": {}
+                                                    "inventory_items@chest_ui_inventory_system.inventory_items": {}
                                                 },
                                                 {
                                                     "gap3@common.empty_panel": {
@@ -157,11 +113,11 @@
                                                             0,
                                                             3
                                                         ],
-							"ignored": "(not $show_inventory)"
+                                                        "ignored": "(not $show_inventory)"
                                                     }
                                                 },
                                                 {
-                                                    "hotbar_items@chest_ui.hotbar_items": {}
+                                                    "hotbar_items@chest_ui_inventory_system.hotbar_items": {}
                                                 }
                                             ]
                                         }
