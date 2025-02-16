@@ -11,7 +11,7 @@ A Minecraft: Bedrock Script API pack that alters the Action Form UI to look & fu
 # Benefits
 
 - As fast as vanilla forms
-- Java-style UIs
+- Java-Servers styled UIs
 - Cursor-following hover text
 - Easy to read
 - Good for large numbers of buttons
@@ -19,35 +19,37 @@ A Minecraft: Bedrock Script API pack that alters the Action Form UI to look & fu
 - Supports durability
 
 # Usage
-Import into file- this example will work for any top-level file. Changes will be needed for nested files.
+- Import into file- this example will work for any top-level file. Changes will be needed for nested files.
 ```js
 import { ChestFormData } from './extensions/forms.js';
 ```
 
-Create a new chest form, like you would for any other form UI. The size can be left out, and will default to `'small'`.
+- Create a new chest form, like you would for any other form UI. The size can be left out, and will default to `'small'`.
 ```js
 const form = new ChestFormData()
 ```
 
-Add a name to the UI, to display at the top.
+- Add a name to the UI, to display at the top.
 ```js
 form.title('Form Title')
 ```
-Add buttons!
+- Add buttons!
 ```js
 form.button(0, 'Button Name', ['Button Lore'], 'minecraft:diamond', 10)
 form.button(2, 'Button Name', ['Button Lore'], 'textures/items/my_custom_item', 6, 60)
 ```
-The parameters for the button are as follows:
-1. Location. The slot that the item will display in, starting from zero. Max of 26 for a small chest, or 53 for a large.
-2. Name. The name of the button.
-3. Lore. An array of strings which will display below the item's name.
-4. Texture. Item/block type id or path to the texture. Can be used like `minecraft:cake` or `minecraft:acacia_log` (A namespace of `minecraft:` will be assumed if not specified). For custom textures, specify the path of the texture (Must include `textures/` at the start of the path)
-5. Stack size. This is an optional parameter, and will default to 1. Displays a small number in the lower right-hand corner- useful for shops selling multiple of an item at once!
-6. Durability. This is an optional parameter, and will default to 0. Supports value between 0 and 99. Displays the durability that can set using the form interface- useful for tools and in general for looks.
-7. Enchanted. This is an optional parameter, and will default to false. Displays the enchant glint effect on the item/block rendered if using the type id. This parameter will not work if using a custom textures path (`textures/...`)
+- The parameters for the button are as follows:
+1. **Location**: The slot that the item will display in, starting from zero. Max of 26 for a small chest, or 53 for a large.
+2. **Name**: The text of the button.
+3. **Lore**: An array of strings which will display below the item's name.
+4. **Texture**: Item/block type id or path to the texture. Can be used like `minecraft:cake` or `minecraft:acacia_log` (A namespace of `minecraft:` will be assumed if not specified). For custom textures, specify the path of the texture (Must include `textures/` at the start of the path). ⚠️ If you don't know the amount of custom items your other add-ons have, it is recommended to use `textures/path_to_texture` and avoid using type id!
+5. **Stack size**: This is an optional parameter, and will default to 1. Displays a small number in the lower right-hand corner- useful for shops selling multiple of an item at once!
+6. **Durability**: This is an optional parameter, and will default to 0. Supports value between 0 and 99. Displays the durability that can set using the form interface- useful for tools and in general for looks.
+7. **Enchanted**: This is an optional parameter, and will default to false. Displays the enchant glint effect on the item/block rendered if using the type id. This parameter will not work if using a custom textures path (`textures/...`)
 
-Show it to the player & get a response
+- Pattern function can also be used for creating quick slot filler buttons. See the example `index.js`!
+
+- Show it to the player & get a response.
 ```js
 form.show(player).then(response)
 ```
@@ -61,21 +63,22 @@ Example pack usage: [`index.js`](https://github.com/Herobrine643928/Chest-UI/blo
 
 Find a list of item/block type ids [here](https://learn.microsoft.com/en-us/minecraft/creator/reference/content/addonsreference/examples/addonitems).
 
-# Custom Content in the Form
+# Custom Items and Blocks
+If your other enabled packs contain custom items and blocks, and you want type ids to work, list them as follows:
 1. Navigate to `BP/script/extensions/forms.js`
-2. Add the relevant item informatio into the `custom_content` constant at the top of the file!
+2. Add the relevant item information into the `custom_content` constant at the top of the file!
 
-Want Dynamic Sizing/Custom Number of Slots?
+# Dynamic Sizing/Custom Number of Slots?
 
-If you want custom chest slots sizes, you have to add controls to `"chest_panel"` in `chest_server_form.json` in the format like the ones that already exist. Then you have to edit `forms.js`, and add you condition and identifier to `sizes` map/array following the format using which how pre-defined sizes are added.
+If you want custom chest slots sizes, you have to add controls to `"chest_panel"` in `chest_server_form.json` in the format like the ones that already exist. Then you have to edit `forms.js`, and add your condition and identifier to `sizes` map/array following the format using which how pre-defined sizes are added.
 
-Want to edit the texture?
+# Edit Background Texture
 
-Open `chest_server_form.json` and search and change `$background` (ninesliced) variable.
+Open `chest_server_form.json` and search and change `$border_and_background_texture` (ninesliced) variable.
 
 # Future Ideas
 
-- Functioning inventory section (it’s just for looks at the moment) (feels impossible to do)
+- ~~Functioning inventory section (it’s just for looks at the moment) (feels impossible to do)~~ Done.
 - ~~Dynamic sizing based on number of buttons, in rows of 9 at a time (complex and probably have to rewrite everything)~~ Done.
 - ~~Rawtext component support for form text (useful for translations to other languages)~~ Done.
 
