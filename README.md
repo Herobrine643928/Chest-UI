@@ -8,7 +8,7 @@ A Minecraft: Bedrock Script API pack that alters the Action Form UI to look & fu
 
 ![image_3](https://github.com/Herobrine643928/Chest-UI/assets/94234093/474ad660-d4f8-4280-9403-d1920efada77)
 
-# Benefits
+## Benefits
 
 - As fast as vanilla forms
 - Java-Servers styled UIs
@@ -18,7 +18,7 @@ A Minecraft: Bedrock Script API pack that alters the Action Form UI to look & fu
 - Supports enchanted items and isometric blocks
 - Supports durability
 
-# Usage
+## Usage
 - Import into file- this example will work for any top-level file. Changes will be needed for nested files.
 ```js
 import { ChestFormData } from './extensions/forms.js';
@@ -54,29 +54,29 @@ form.button(2, 'Button Name', ['Button Lore'], 'textures/items/my_custom_item', 
 form.show(player).then(response)
 ```
 
-# Inventory Section
+## Inventory Section
 The inventory section of the UI can be toggled by a boolean value in `RP/ui/_global_variables.json`.
 Set it to true/false depending on what you want the UI to show as!
 
-# Examples
+## Examples
 Example pack usage: [`index.js`](https://github.com/Herobrine643928/Chest-UI/blob/main/BP/scripts/index.js).
 
 Find a list of item/block type ids [here](https://learn.microsoft.com/en-us/minecraft/creator/reference/content/addonsreference/examples/addonitems).
 
-# Custom Items and Blocks
+## Custom Items and Blocks
 If your other enabled packs contain custom items and blocks, and you want type ids to work, list them as follows:
 1. Navigate to `BP/script/extensions/forms.js`
 2. Add the relevant item information into the `custom_content` constant at the top of the file!
 
-# Dynamic Sizing/Custom Number of Slots?
+## Dynamic Sizing / Custom Number of Slots
 
 If you want custom chest slots sizes, you have to add controls to `"chest_panel"` in `chest_server_form.json` in the format like the ones that already exist. Then you have to edit `forms.js`, and add your condition and identifier to `sizes` map/array following the format using which how pre-defined sizes are added.
 
-# Edit Background Texture
+## Edit Background Texture
 
 Open `chest_server_form.json` and search and change `$border_and_background_texture` (ninesliced) variable.
 
-# Future Ideas
+## Future Ideas
 
 - ~~Functioning inventory section (it’s just for looks at the moment) (feels impossible to do)~~ Done.
 - ~~Dynamic sizing based on number of buttons, in rows of 9 at a time (complex and probably have to rewrite everything)~~ Done.
