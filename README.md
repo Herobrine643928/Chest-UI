@@ -18,6 +18,10 @@ A Minecraft: Bedrock Script API pack that alters the Action Form UI to look & fu
 - Supports enchanted items and isometric blocks
 - Supports durability
 
+## Enable Layouts
+
+⚠️Go to `_global_variables.json` and enable the slot layouts you want to use and disable others. It is important to remove lag spikes.
+
 ## Usage
 - Import into file- this example will work for any top-level file. Changes will be needed for nested files.
 ```js
