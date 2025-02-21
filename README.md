@@ -74,7 +74,7 @@ If you want custom chest slots sizes, you have to add controls to `"chest_panel"
 
 ## Edit Background Texture
 
-Open `chest_server_form.json` and search and change `$border_and_background_texture` (ninesliced) variable.
+Open `_global_variables_.json` and search and change `$border_and_background_texture` (ninesliced) variable.
 
 ## Future Ideas
 

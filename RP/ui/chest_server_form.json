@@ -19,7 +19,7 @@
             0
         ],
         "grid_dimensions": "$grid_size",
-        "grid_item_template": "chest_ui.inventory_button",
+        "grid_item_template": "chest_ui.inventory_item_panel",
         "collection_name": "form_buttons",
         "layer": 1
     },
@@ -144,7 +144,8 @@
                         9,
                         1
                     ],
-                    "$condition": "§c§h§e§s§t§0§9"
+                    "$condition": "§c§h§e§s§t§0§9",
+                    "ignored": "$disable_9_slots_layout"
                 }
             },
             {
@@ -153,7 +154,8 @@
                         1,
                         1
                     ],
-                    "$condition": "§c§h§e§s§t§0§1"
+                    "$condition": "§c§h§e§s§t§0§1",
+                    "ignored": "$disable_1_slots_layout"
                 }
             },
             {
@@ -162,7 +164,8 @@
                         5,
                         1
                     ],
-                    "$condition": "§c§h§e§s§t§0§5"
+                    "$condition": "§c§h§e§s§t§0§5",
+                    "ignored": "$disable_5_slots_layout"
                 }
             },
             {
@@ -171,7 +174,8 @@
                         9,
                         2
                     ],
-                    "$condition": "§c§h§e§s§t§1§8"
+                    "$condition": "§c§h§e§s§t§1§8",
+                    "ignored": "$disable_18_slots_layout"
                 }
             },
             {
@@ -180,7 +184,8 @@
                         9,
                         3
                     ],
-                    "$condition": "§c§h§e§s§t§2§7"
+                    "$condition": "§c§h§e§s§t§2§7",
+                    "ignored": "$disable_27_slots_layout"
                 }
             },
             {
@@ -189,7 +194,8 @@
                         9,
                         4
                     ],
-                    "$condition": "§c§h§e§s§t§3§6"
+                    "$condition": "§c§h§e§s§t§3§6",
+                    "ignored": "$disable_36_slots_layout"
                 }
             },
             {
@@ -198,7 +204,8 @@
                         9,
                         5
                     ],
-                    "$condition": "§c§h§e§s§t§4§5"
+                    "$condition": "§c§h§e§s§t§4§5",
+                    "ignored": "$disable_45_slots_layout"
                 }
             },
             {
@@ -207,7 +214,8 @@
                         9,
                         6
                     ],
-                    "$condition": "§c§h§e§s§t§5§4"
+                    "$condition": "§c§h§e§s§t§5§4",
+                    "ignored": "$disable_54_slots_layout"
                 }
             }
         ]
@@ -218,6 +226,7 @@
             18,
             18
         ],
+        "layer": 1,
         "controls": [
             {
                 "bg@chest_ui.cell": {}
@@ -405,7 +414,7 @@
             18
         ],
         "texture": "textures/ui/focus_border_white",
-        "layer": 3
+        "layer": 4
     },
     "item_details": {
         "type": "custom",
@@ -592,18 +601,5 @@
             18
         ],
         "layer": 2
-    },
-    "inventory_button": {
-        "type": "stack_panel",
-        "size": [
-            18,
-            18
-        ],
-        "layer": 1,
-        "controls": [
-            {
-                "inventory_item_panel@chest_ui.inventory_item_panel": {}
-            }
-        ]
     }
 }

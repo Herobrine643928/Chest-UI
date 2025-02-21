@@ -1,4 +1,23 @@
 {
-	"$show_inventory": true, // Set to false if don't want to show inventory, inventory is heavy and not recommended for low end devices.
-	"$border_and_background_texture": "textures/ui/dialog_background_opaque" // Add your own texture for background and border here. Edit `textures/ui/item_background` to change slot texture.
+	"$show_inventory": true, // Set to false if don't want to show inventory, Not recommended for low end devices.
+	"$border_and_background_texture": "textures/ui/dialog_background_opaque", // Add your own texture for background and border here. Edit `textures/ui/item_background` to change slot texture.
+
+	/*
+		*It is important to only enable the layouts that you're going to use and disable others to decrease lag*
+	*/
+	"$disable_1_slots_layout": true,
+
+	"$disable_5_slots_layout": true,
+
+	"$disable_9_slots_layout": false,
+
+	"$disable_18_slots_layout": true,
+
+	"$disable_27_slots_layout": true,
+
+	"$disable_36_slots_layout": true,
+
+	"$disable_45_slots_layout": true,
+
+	"$disable_54_slots_layout": false
 }
