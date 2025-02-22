@@ -1,0 +1,457 @@
+{
+    "namespace": "furnace_ui",
+    "furnace_panel": {
+        "type": "panel",
+        "size": [
+            "100%c",
+            "100%c"
+        ],
+        "controls": [
+            {
+                "background": {
+                    "type": "image",
+                    "texture": "$border_and_background_texture",
+                    "layer": 0,
+                    "size": [ // this line took a decade to figure out
+                        "100%c + 14px",
+                        "100%c + 10px"
+                    ],
+                    "controls": [
+                        {
+                            "container": {
+                                "type": "panel",
+                                "size": [
+                                    "100%c",
+                                    "100%c"
+                                ],
+                                "controls": [
+                                    {
+                                        "stack": {
+                                            "type": "stack_panel",
+                                            "orientation": "vertical",
+                                            "size": [
+                                                162,
+                                                155
+                                            ],
+                                            "controls": [
+                                                {
+                                                    "furnace@furnace_ui.furnace_items": {}
+                                                },
+                                                {
+                                                    "gap2@common.empty_panel": {
+                                                        "size": [
+                                                            0,
+                                                            1
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "inventory_label@chest_ui_inventory_system.inventory_label": {}
+                                                },
+                                                {
+                                                    "inventory_items@chest_ui_inventory_system.inventory_items": {
+                                                        "$start_index": 3
+                                                    }
+                                                },
+                                                {
+                                                    "gap3@common.empty_panel": {
+                                                        "size": [
+                                                            0,
+                                                            3
+                                                        ],
+                                                        "ignored": "(not $show_inventory)"
+                                                    }
+                                                },
+                                                {
+                                                    "hotbar_items@chest_ui_inventory_system.hotbar_items": {
+                                                        "$start_index": 3
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "furnace_label": {
+        "type": "label",
+        "text": "#title_text",
+        "color": "$title_text_color",
+        "layer": 2,
+        "anchor_from": "top_middle",
+        "anchor_to": "top_middle",
+        "text_alignment": "center",
+        "offset": [
+            0,
+            -1
+        ],
+        "size": [
+            "100%",
+            20
+        ]
+    },
+    "furnace_items": {
+        "type": "panel",
+        "size": [
+            "100%",
+            "50% - 10px"
+        ],
+        "controls": [
+            {
+                "furnace_label@furnace_ui.furnace_label": {}
+            },
+            {
+                "close_button@common.close_button": {
+                    "$close_button_offset": [
+                        5,
+                        -3
+                    ]
+                }
+            },
+            {
+                "furnace_arrow_empty_image": {
+                    "type": "image",
+                    "layer": 1,
+                    "texture": "textures/ui/arrow_inactive",
+                    "anchor_from": "center",
+                    "anchor_to": "center",
+                    "size": [
+                        22,
+                        15
+                    ],
+                    "offset": [
+                        0,
+                        4
+                    ]
+                }
+            },
+            {
+                "furnace_arrow_full_image@furnace_arrow_full_image": {
+                    "anchor_to": "center",
+                    "anchor_from": "center",
+                    "type": "image",
+                    "layer": 3,
+                    "texture": "textures/ui/arrow_active",
+                    "size": [
+                        22,
+                        15
+                    ],
+                    "offset": [
+                        0,
+                        4
+                    ],
+                    "bindings": [
+                        {
+                            "binding_name": "#title_text"
+                        },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(not ((#title_text - §l§i§t) = #title_text))",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "furnace_input_panel": {
+                    "type": "panel",
+                    "size": [
+                        "50%",
+                        "100%"
+                    ],
+                    "offset": [
+                        0,
+                        4
+                    ],
+                    "anchor_from": "top_left",
+                    "anchor_to": "top_left",
+                    "controls": [
+                        {
+                            "panel": {
+                                "type": "collection_panel",
+                                "size": [
+                                    16,
+                                    16
+                                ],
+                                "anchor_from": "right_middle",
+                                "anchor_to": "right_middle",
+                                "collection_name": "form_buttons",
+                                "controls": [
+                                    {
+                                        "furnace_ingredient@chest_ui.inventory_item_panel": {
+                                            "collection_index": 0,
+                                            "offset": [
+                                                -20,
+                                                -19
+                                            ],
+                                            "anchor_from": "right_middle",
+                                            "anchor_to": "right_middle"
+                                        }
+                                    },
+                                    {
+                                        "flame_panel": {
+                                            "type": "panel",
+                                            "size": [
+                                                13,
+                                                13
+                                            ],
+                                            "offset": [
+                                                -21,
+                                                0
+                                            ],
+                                            "controls": [
+                                                {
+                                                    "flame_empty_image": {
+                                                        "type": "image",
+                                                        "texture": "textures/ui/flame_empty_image",
+                                                        "layer": 2
+                                                    }
+                                                },
+                                                {
+                                                    "flame_full_image": {
+                                                        "type": "image",
+                                                        "texture": "textures/ui/flame_full_image",
+                                                        "layer": 3,
+                                                        "bindings": [
+                                                            {
+                                                                "binding_name": "#title_text"
+                                                            },
+                                                            {
+                                                                "binding_type": "view",
+                                                                "source_property_name": "(not ((#title_text - §l§i§t) = #title_text))",
+                                                                "target_property_name": "#visible"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "furnace_fuel@chest_ui.inventory_item_panel": {
+                                            "collection_index": 1,
+                                            "offset": [
+                                                -20,
+                                                19
+                                            ],
+                                            "anchor_from": "right_middle",
+                                            "anchor_to": "right_middle"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "furnace_output_panel": {
+                    "type": "collection_panel",
+                    "size": [
+                        "50%",
+                        "100%"
+                    ],
+                    "offset": [0, 4],
+                    "anchor_from": "top_right",
+                    "anchor_to": "top_right",
+                    "collection_name": "form_buttons",
+                    "controls": [
+                        {
+                            "output_item@furnace_ui.inventory_item_panel": {
+                                "collection_index": 2,
+                                "anchor_from": "left_middle",
+                                "anchor_to": "left_middle",
+                                "offset": [
+                                    20,
+                                    0
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "inventory_item_panel": {
+        "type": "panel",
+        "size": [
+            26,
+            26
+        ],
+        "layer": 1,
+        "controls": [
+            {
+                "bg@chest_ui.cell": {
+                    "size": [
+                        26,
+                        26
+                    ]
+                }
+            },
+            {
+                "inventory_button_amount@chest_ui.inventory_button_amount": {
+                    "offset": [-4, -4]
+                }
+            },
+            {
+                "inventory_item@furnace_ui.inventory_item": {}
+            }
+        ]
+    },
+    "inventory_item@common.button": {
+        "$pressed_button_name": "button.form_button_click",
+        "bindings": [
+            {
+                "binding_name": "#null",
+                "binding_type": "collection",
+                "binding_condition": "none",
+                "binding_collection_name": "form_buttons"
+            },
+            {
+                "binding_name": "#null",
+                "binding_type": "collection_details",
+                "binding_collection_name": "form_buttons"
+            },
+            {
+                "binding_name": "#form_button_text",
+                "binding_type": "collection",
+                "binding_collection_name": "form_buttons"
+            },
+            {
+                "binding_name": "#null",
+                "binding_type": "view",
+                "source_property_name": "(not (#form_button_text = ''))",
+                "target_property_name": "#visible"
+            }
+        ],
+        "$aux_id": [
+            {
+                "binding_name": "#form_button_texture",
+                "binding_type": "collection",
+                "binding_collection_name": "form_buttons"
+            },
+            {
+                "binding_type": "view",
+                "source_property_name": "(not (('%.8s' * #form_button_texture) = 'textures'))",
+                "target_property_name": "#visible"
+            },
+            {
+                "binding_type": "view",
+                "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))",
+                "target_property_name": "#visible"
+            },
+            {
+                "binding_type": "view",
+                "source_property_name": "(#form_button_texture * 1)",
+                "target_property_name": "#item_id_aux"
+            }
+        ],
+        "default_control": "default",
+        "hover_control": "hover",
+        "pressed_control": "pressed",
+        "controls": [
+            {
+                "default@chest_ui.default_control": {}
+            },
+            {
+                "hover@furnace_ui.hover_control": {}
+            },
+            {
+                "pressed@furnace_ui.pressed_control": {}
+            }
+        ]
+    },
+    "hover_control": {
+        "type": "panel",
+        "size": [
+            16,
+            16
+        ],
+        "controls": [
+            {
+                "item@beacon.item_renderer": {
+                    "size": [
+                        16,
+                        16
+                    ],
+                    "layer": 4,
+                    "bindings": "$aux_id"
+                }
+            },
+            {
+                "durability_bar@furnace_ui.durability_bar": {
+                    "offset": [
+                        0,
+                        -2.5
+                    ]
+                }
+            },
+            {
+                "non_renderer_item@chest_ui.non_renderer_item": {
+                }
+            },
+            {
+                "item_details@chest_ui.item_details": {}
+            },
+            {
+                "highlight_slot@furnace_ui.highlight_slot": {
+                }
+            },
+            {
+                "focus_border@furnace_ui.focus_border": {
+                }
+            }
+        ]
+    },
+    "pressed_control": {
+        "type": "panel",
+        "size": [
+            16,
+            16
+        ],
+        "controls": [
+            {
+                "item@beacon.item_renderer": {
+                    "size": [
+                        16,
+                        16
+                    ],
+                    "layer": 4,
+                    "bindings": "$aux_id"
+                }
+            },
+            {
+                "durability_bar@furnace_ui.durability_bar": {}
+            },
+            {
+                "non_renderer_item@chest_ui.non_renderer_item": {}
+            },
+            {
+                "focus_border@furnace_ui.focus_border": {}
+            }
+        ]
+    },
+    "highlight_slot@chest_ui.highlight_slot":{
+        "size": [
+            26,
+            26
+        ]
+    },
+    "focus_border@chest_ui.focus_border": {
+        "size": [
+            26,
+            26
+        ]
+    },
+    "durability_bar@chest_ui.durability_bar": {
+        "offset": [
+            0,
+            -11.5
+        ]
+    }
+}

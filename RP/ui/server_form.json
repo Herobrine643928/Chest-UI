@@ -24,7 +24,7 @@
 						},
 						{
 							"binding_type": "view",
-							"source_property_name": "((#title_text - '§c§h§e§s§t') = #title_text)",
+							"source_property_name": "(((#title_text - '§c§h§e§s§t') = #title_text) and ((#title_text - '§f§u§r§n§a§c§e') = #title_text))",
 							"target_property_name": "#visible"
 						}
 					]
@@ -39,6 +39,21 @@
 						{
 							"binding_type": "view",
 							"source_property_name": "(not ((#title_text - '§c§h§e§s§t') = #title_text))",
+							"target_property_name": "#visible"
+						}
+					]
+				}
+			},
+			{
+				"furnace_ui@furnace_ui.furnace_panel": {
+					"ignored": "$disable_furnace_ui",
+					"bindings": [
+						{
+							"binding_name": "#title_text"
+						},
+						{
+							"binding_type": "view",
+							"source_property_name": "(not ((#title_text - '§f§u§r§n§a§c§e') = #title_text))",
 							"target_property_name": "#visible"
 						}
 					]

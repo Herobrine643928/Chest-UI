@@ -1,7 +1,12 @@
+import { Container } from '@minecraft/server';
 import { ActionFormData } from '@minecraft/server-ui';
 import { typeIdToDataId, typeIdToID } from './typeIds.js';
-import { BlockTypes, Container, EntityInventoryComponent, ItemDurabilityComponent } from '@minecraft/server';
 
+/**
+ * Turns the logic for inventory slots on/off. Only set this to false if you have disabled inventory in RP/ui/_global_variables.json side!
+ * Disabling this may also reduce form opening lag a bit.
+ */
+const inventory_enabled = true;
 /**
  * Defines the custom block & item IDs for the form.
  * You can reference either a vanilla texture icon, which functions identically to other items...
@@ -50,33 +55,20 @@ class ChestFormData {
 		/** @internal */
 		this.#titleText = { rawtext: [{ text: `${sizing[0]}` }] };
 		/** @internal */
-		this.#buttonArray = [];
-		for (let i = 0; i < sizing[1]; i++) {
-			this.#buttonArray.push(['', undefined])
-		};
+		this.#buttonArray = Array(sizing[1]).fill(['', undefined]);
 		this.slotCount = sizing[1];
 	}
 	title(text) {
-		if (typeof (text) === 'string') {
-			this.#titleText.rawtext.push({
-				text: `${text}`
-			})
-		} else if (typeof (text) === 'object') {
-			if (!text.rawtext) {
-				this.#titleText.rawtext.push({
-					text: ''
-				})
+		if (typeof text === 'string') {
+			this.#titleText.rawtext.push({ text: text });
+		}
+		else if (typeof text === 'object') {
+			if (text.rawtext) {
+				this.#titleText.rawtext.push(...text.rawtext);
 			}
 			else {
-				text.rawtext.forEach((obj) => {
-					this.#titleText.rawtext.push(obj)
-				})
+				this.#titleText.rawtext.push(text);
 			}
-		}
-		else {
-			this.#titleText.rawtext.push({
-				text: ''
-			})
 		}
 		return this;
 	}
@@ -86,40 +78,30 @@ class ChestFormData {
 		let buttonRawtext = {
 			rawtext: [
 				{
-					text: `stack#${Math.min(Math.max(stackSize, 1) || 1, 99).toString().padStart(2, '0')}dur#${Math.min(Math.max(durability, 0) || 0, 99).toString().padStart(2, '0')}§r`
+					text: `stack#${String(Math.min(Math.max(stackSize, 1), 99)).padStart(2, '0')}dur#${String(Math.min(Math.max(durability, 0), 99)).padStart(2, '0')}§r`
 				}
 			]
+		};
+		if (typeof itemName === 'string') {
+			buttonRawtext.rawtext.push({ text: itemName ? `${itemName}§r` : '§r' });
 		}
-		if (typeof (itemName) === 'string') {
-			buttonRawtext.rawtext.push({ text: itemName ? itemName + '§r' : '§r' })
-		} else if (typeof (itemName) === 'object') {
-			if (!itemName.rawtext) { buttonRawtext.rawtext.push({ text: '§r' }) }
-			else {
-				itemName.rawtext.forEach((obj) => {
-					buttonRawtext.rawtext.push(obj)
-				})
-				buttonRawtext.rawtext.push({ text: '§r' })
-			}
-		} else { return }
-
-		if (itemDesc?.length) {
-			itemDesc.forEach((obj) => {
-				if (typeof (obj) === 'string') {
-					buttonRawtext.rawtext.push({ text: `\n${obj}` })
-				} else if (typeof (obj) === "object") {
-					if (!obj.rawtext) { buttonRawtext.rawtext.push({ text: `\n` }) }
-					else {
-						obj.rawtext.forEach((desc) => {
-							buttonRawtext.rawtext.push({ text: `\n` })
-							buttonRawtext.rawtext.push(desc)
-						})
-					}
+		else if (typeof itemName === 'object' && itemName.rawtext) {
+			buttonRawtext.rawtext.push(...itemName.rawtext, { text: '§r' });
+		}
+		else return;
+		if (Array.isArray(itemDesc) && itemDesc.length > 0) {
+			for (const obj of itemDesc) {
+				if (typeof obj === 'string') {
+					buttonRawtext.rawtext.push({ text: `\n${obj}` });
 				}
-			})
+				else if (typeof obj === 'object' && obj.rawtext) {
+					buttonRawtext.rawtext.push({ text: `\n` }, ...obj.rawtext);
+				}
+			}
 		}
-		this.#buttonArray.splice(slot, 1, [
+		this.#buttonArray.splice(Math.max(0, Math.min(slot, this.slotCount - 1)), 1, [
 			buttonRawtext,
-			(((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) + (!!enchanted * 32768)) || targetTexture
+			ID === undefined ? targetTexture : ((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) + (enchanted ? 32768 : 0)
 		]);
 		return this;
 	}
@@ -128,99 +110,157 @@ class ChestFormData {
 			const row = pattern[i];
 			for (let j = 0; j < row.length; j++) {
 				const letter = row.charAt(j);
-				if (key[letter]) {
-					const slot = j + i * 9;
-					const data = key[letter];
-					const targetTexture = custom_content_keys.has(data.texture) ? custom_content[data.texture]?.texture : data.texture;
-					const ID = typeIdToDataId.get(targetTexture) ?? typeIdToID.get(targetTexture);
-					let buttonRawtext = {
-						rawtext: [
-							{
-								text: `stack#${Math.min(Math.max(data?.stackAmount ?? 1, 1) || 1, 99).toString().padStart(2, '0')}dur#${Math.min(Math.max(data?.durability, 0) || 0, 99).toString().padStart(2, '0')}§r`
-							}
-						]
-					}
-					if (typeof (data?.itemName) === 'string') {
-						buttonRawtext.rawtext.push({ text: data?.itemName ? data?.itemName + '§r' : '§r' })
-					} else if (typeof (data?.itemName) === 'object') {
-						if (!data?.itemName.rawtext) { buttonRawtext.rawtext.push({ text: '§r' }) }
-						else {
-							data?.itemName.rawtext.forEach((obj) => {
-								buttonRawtext.rawtext.push(obj)
-							})
-							buttonRawtext.rawtext.push({ text: '§r' })
-						}
-					} else { return }
-
-					if (data?.itemDesc?.length) {
-						data?.itemDesc?.forEach((obj) => {
-							if (typeof (obj) === 'string') {
-								buttonRawtext.rawtext.push({ text: `\n${obj}` })
-							} else if (typeof (obj) === "object") {
-								if (!obj.rawtext) { buttonRawtext.rawtext.push({ text: `\n` }) }
-								else {
-									obj.rawtext.forEach((desc) => {
-										buttonRawtext.rawtext.push({ text: `\n` })
-										buttonRawtext.rawtext.push(desc)
-									})
-								}
-							}
-						})
-					}
-					this.#buttonArray.splice(slot, 1, [buttonRawtext,
-						(((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) + (!!data?.enchanted * 32768)) || targetTexture
-					])
+				const data = key[letter];
+				if (!data) continue;
+				const slot = j + i * 9;
+				const targetTexture = custom_content_keys.has(data.texture) ? custom_content[data.texture]?.texture : data.texture;
+				const ID = typeIdToDataId.get(targetTexture) ?? typeIdToID.get(targetTexture);
+				const { stackAmount = 1, durability = 0, itemName, itemDesc, enchanted = false } = data;
+				const stackSize = String(Math.min(Math.max(stackAmount, 1), 99)).padStart(2, '0');
+				const durValue = String(Math.min(Math.max(durability, 0), 99)).padStart(2, '0');
+				let buttonRawtext = {
+					rawtext: [{ text: `stack#${stackSize}dur#${durValue}§r` }]
+				};
+				if (typeof itemName === 'string') {
+					buttonRawtext.rawtext.push({ text: `${itemName}§r` });
 				}
+				else if (itemName?.rawtext) {
+					buttonRawtext.rawtext.push(...itemName.rawtext, { text: '§r' });
+				}
+				else continue;
+				if (Array.isArray(itemDesc) && itemDesc.length > 0) {
+					for (const obj of itemDesc) {
+						if (typeof obj === 'string') {
+							buttonRawtext.rawtext.push({ text: `\n${obj}` });
+						} else if (obj?.rawtext) {
+							buttonRawtext.rawtext.push({ text: `\n`, ...obj.rawtext });
+						}
+					}
+				}
+				this.#buttonArray.splice(Math.max(0, Math.min(slot, this.slotCount - 1)), 1, [
+					buttonRawtext,
+					ID === undefined ? targetTexture : ((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) + (enchanted ? 32768 : 0)
+				]);
 			}
 		}
 		return this;
 	}
 	show(player) {
-		const form = new ActionFormData()
-			.title(this.#titleText);
+		const form = new ActionFormData().title(this.#titleText);
 		this.#buttonArray.forEach(button => {
 			form.button(button[0], button[1]?.toString());
-		})
-
-		/**
-		 * @type {Container} inventory
-		 */
-		const container = player.getComponent('minecraft:inventory').container;
-
+		});
+		if (!inventory_enabled) return form.show(player);
+		/** @type {Container} */
+		const container = player.getComponent('inventory').container;
 		for (let i = 0; i < container.size; i++) {
-			if (container.getItem(i)) {
-				const item = container.getItem(i);
-				const targetTexture = custom_content_keys.has(item.typeId) ? custom_content[texture]?.texture : item.typeId;
-				const ID = typeIdToDataId.get(targetTexture) ?? typeIdToID.get(targetTexture);
-				const durability = item.getComponent('minecraft:durability');
-				const durDamage = durability ? Math.round((durability.maxDurability - durability.damage) / durability.maxDurability * 99) : 0;
-
-				const amount = item.amount;
-				const itemName = () => {
-					return item.typeId.split(":")
-						.pop()
-						.replace(/_/g, " ")
-						.replace(/\b\w/g, char => char.toUpperCase());
-				}
-
-				let buttonRawtext = {
-					rawtext: [
-						{
-							text: `stack#${amount.toString().padStart(2, '0')}dur#${Math.min(Math.max(durDamage, 0) || 0, 99).toString().padStart(2, '0')}§r${itemName()}`
-						}
-					]
-				}
-				item.getLore().forEach((obj) => {
-					buttonRawtext.rawtext.push({ text: `\n${obj}` })
-				})
-
-				form.button(buttonRawtext, `${((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) || targetTexture}`)
-			} else {
-				form.button('')
-			}
+			const item = container.getItem(i);
+			if (!item) continue;
+			const typeId = item.typeId;
+			const targetTexture = custom_content_keys.has(typeId) ? custom_content[typeId]?.texture : typeId;
+			const ID = typeIdToDataId.get(targetTexture) ?? typeIdToID.get(targetTexture);
+			const durability = item.getComponent('durability');
+			const durDamage = durability ? Math.round((durability.maxDurability - durability.damage) / durability.maxDurability * 99) : 0;
+			const amount = item.amount;
+			const formattedItemName = typeId.replace(/.*(?<=:)/, '').replace(/_/g, ' ').replace(/(^\w|\s\w)/g, (m) => m.toUpperCase());
+			let buttonRawtext = {
+				rawtext: [
+					{
+						text: `stack#${String(amount).padStart(2, '0')}dur#${String(durDamage).padStart(2, '0')}§r${formattedItemName}`
+					}
+				]
+			};
+			const loreText = item.getLore().join('\n');
+			if (loreText) buttonRawtext.rawtext.push({ text: loreText });
+			const finalID = ID === undefined ? targetTexture : ((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536);
+			form.button(buttonRawtext, finalID.toString());
 		}
-		return form.show(player)
+		return form.show(player);
 	}
 }
 
-export { ChestFormData };
+class FurnaceFormData {
+	#titleText; #buttonArray;
+	constructor(isLit = false) {
+		/** @internal */
+		this.#titleText = { rawtext: [{ text: isLit ? '§f§u§r§n§a§c§e§l§i§t§r' : '§f§u§r§n§a§c§e§r' }] };
+		/** @internal */
+		this.#buttonArray = Array(3).fill(['', undefined]);
+		this.slotCount = 3;
+	}
+	title(text) {
+		if (typeof text === 'string') {
+			this.#titleText.rawtext.push({ text });
+		}
+		else if (typeof text === 'object' && text.rawtext) {
+			this.#titleText.rawtext.push(...text.rawtext);
+		}
+		else {
+			this.#titleText.rawtext.push({ text: '' });
+		}
+		return this;
+	}
+	button(slot, itemName, itemDesc, texture, stackSize = 1, durability = 0, enchanted = false) {
+		const targetTexture = custom_content_keys.has(texture) ? custom_content[texture]?.texture : texture;
+		const ID = typeIdToDataId.get(targetTexture) ?? typeIdToID.get(targetTexture);
+		let buttonRawtext = {
+			rawtext: [{ text: `stack#${String(Math.min(Math.max(stackSize, 1), 99)).padStart(2, '0')}dur#${String(Math.min(Math.max(durability, 0), 99)).padStart(2, '0')}§r` }]
+		};
+
+		if (typeof itemName === 'string') {
+			buttonRawtext.rawtext.push({ text: itemName ? `${itemName}§r` : '§r' });
+		}
+		else if (typeof itemName === 'object' && itemName.rawtext) {
+			buttonRawtext.rawtext.push(...itemName.rawtext, { text: '§r' });
+		}
+		else return;
+		if (Array.isArray(itemDesc) && itemDesc.length) {
+			itemDesc.forEach(obj => {
+				if (typeof obj === 'string') {
+					buttonRawtext.rawtext.push({ text: `\n${obj}` });
+				} else if (typeof obj === 'object' && obj.rawtext) {
+					buttonRawtext.rawtext.push({ text: `\n` }, ...obj.rawtext);
+				}
+			});
+		}
+		this.#buttonArray.splice(Math.max(0, Math.min(slot, this.slotCount - 1)), 1, [
+			buttonRawtext,
+			ID === undefined ? targetTexture : ((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) + (enchanted ? 32768 : 0)
+		]);
+		return this;
+	}
+	show(player) {
+		const form = new ActionFormData().title(this.#titleText);
+		this.#buttonArray.forEach(button => {
+			form.button(button[0], button[1]?.toString());
+		});
+		if (!inventory_enabled) return form.show(player);
+		/** @type {Container} */
+		const container = player.getComponent('inventory').container;
+		for (let i = 0; i < container.size; i++) {
+			const item = container.getItem(i);
+			if (!item) continue;
+			const typeId = item.typeId;
+			const targetTexture = custom_content_keys.has(typeId) ? custom_content[typeId]?.texture : typeId;
+			const ID = typeIdToDataId.get(targetTexture) ?? typeIdToID.get(targetTexture);
+			const durability = item.getComponent('durability');
+			const durDamage = durability ? Math.round((durability.maxDurability - durability.damage) / durability.maxDurability * 99) : 0;
+			const amount = item.amount;
+			const formattedItemName = typeId.replace(/.*(?<=:)/, '').replace(/_/g, ' ').replace(/(^\w|\s\w)/g, (m) => m.toUpperCase());
+			let buttonRawtext = {
+				rawtext: [
+					{
+						text: `stack#${String(amount).padStart(2, '0')}dur#${String(durDamage).padStart(2, '0')}§r${formattedItemName}`
+					}
+				]
+			};
+			const loreText = item.getLore().join('\n');
+			if (loreText) buttonRawtext.rawtext.push({ text: loreText });
+			const finalID = ID === undefined ? targetTexture : ((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536);
+			form.button(buttonRawtext, finalID.toString());
+		}
+		return form.show(player);
+	}
+}
+
+export { ChestFormData, FurnaceFormData };
