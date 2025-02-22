@@ -58,8 +58,16 @@ form.button(2, 'Button Name', ['Button Lore'], 'textures/items/my_custom_item', 
 form.show(player).then(response)
 ```
 
+## Additional Features
+
+### Furnace Form Data
+`FurnaceFormData` allows to create Action Form UIs with a furnace design!
+See [`index.js`](https://github.com/Herobrine643928/Chest-UI/blob/main/BP/scripts/index.js) for example.
+
+![image_4](https://github.com/user-attachments/assets/fabb287c-2795-4a21-8323-a8ff2a938ac8)
+
 ## Inventory Section
-The inventory section of the UI can be toggled by a boolean value in `RP/ui/_global_variables.json`.
+The inventory section of the UI can be toggled by a boolean value in `RP/ui/_global_variables.json` and in `BP/scripts/extensions/forms.js`. Make sure to disable for both.
 Set it to true/false depending on what you want the UI to show as!
 
 ## Examples
