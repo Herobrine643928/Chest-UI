@@ -31,7 +31,7 @@
                                             "orientation": "vertical",
                                             "size": [
                                                 162,
-                                                155
+                                                158
                                             ],
                                             "controls": [
                                                 {
@@ -50,6 +50,7 @@
                                                 },
                                                 {
                                                     "inventory_items@chest_ui_inventory_system.inventory_items": {
+							"$condition": 0,
                                                         "$start_index": 3
                                                     }
                                                 },
@@ -64,6 +65,7 @@
                                                 },
                                                 {
                                                     "hotbar_items@chest_ui_inventory_system.hotbar_items": {
+							"$condition": 0,
                                                         "$start_index": 3
                                                     }
                                                 }
@@ -99,7 +101,7 @@
         "type": "panel",
         "size": [
             "100%",
-            "50% - 10px"
+            "50% - 7px"
         ],
         "controls": [
             {
@@ -131,7 +133,7 @@
                 }
             },
             {
-                "furnace_arrow_full_image@furnace_arrow_full_image": {
+                "furnace_arrow_full_image": {
                     "anchor_to": "center",
                     "anchor_from": "center",
                     "type": "image",
