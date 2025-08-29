@@ -1754,7 +1754,7 @@ export const typeIdToID = new Map([
 	['minecraft:red_harness', 765],
 	['minecraft:white_harness', 766],
 	['minecraft:yellow_harness', 767],
-	['minecraft:_', 768],
+	['minecraft:copper_golem_spawn_egg', 768],
 	['minecraft:copper_sword', 769],
 	['minecraft:copper_shovel', 770],
 	['minecraft:copper_pickaxe', 771],
