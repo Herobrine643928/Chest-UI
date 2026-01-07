@@ -282,10 +282,10 @@
                 "target_property_name": "#visible"
             },
             {
-                "binding_type": "view",
-                "source_property_name": "(#form_button_texture * 1)",
-                "target_property_name": "#item_id_aux"
-            }
+				"binding_type": "view",
+				"source_property_name": "((#form_button_texture - (#form_button_texture % 65536)) / 65536)",
+				"target_property_name": "#item_id_aux"
+			}
         ],
         "default_control": "default",
         "hover_control": "hover",
