@@ -46,7 +46,9 @@ form.button(2, 'Button Name', ['Button Lore'], 'textures/items/my_custom_item', 
 1. **Location**: The slot that the item will display in, starting from zero. Max of 26 for a small chest, or 53 for a large.
 2. **Name**: The text of the button.
 3. **Lore**: An array of strings which will display below the item's name. Can be `undefined` or `[]` to omit this.
-4. **Texture**: Item/block type id or path to the texture. Can be entered as `minecraft:cake` or `minecraft:acacia_log`. For custom textures, specify the path of the texture (Must include `textures/` at the start of the path). ⚠️ If you don't know the amount of custom items your other add-ons have, it is recommended to use `textures/path_to_texture` and avoid using type id!
+
+4. **Texture**: Item/block type id or path to the texture. Can be entered as `minecraft:cake` or `minecraft:acacia_log`. For custom textures, specify the path of the texture (Must include `textures/` at the start of the path). **⚠️ It is recommended to use `textures/path_to_texture` and avoid using type id to prevent breaking your Chest UI at any random time!**
+
 5. **Stack size**: This is an optional parameter, and will default to 1. Displays a small number in the lower right-hand corner- useful for shops selling multiple of an item at once!
 6. **Durability**: This is an optional parameter, and will default to 0. Supports values between 0 and 99. Displays the durability that can set using the form interface- useful for tools and in general for looks.
 7. **Enchanted**: This is an optional parameter, and will default to false. Displays the enchant glint effect on the item/block rendered if using the type id. This parameter will not work if using a direct texture path (e.g. `textures/...`).
