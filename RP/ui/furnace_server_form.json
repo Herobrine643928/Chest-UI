@@ -50,7 +50,7 @@
                                                 },
                                                 {
                                                     "inventory_items@chest_ui_inventory_system.inventory_items": {
-							"$condition": 0,
+                                                        "$condition": 0,
                                                         "$start_index": 3
                                                     }
                                                 },
@@ -65,7 +65,7 @@
                                                 },
                                                 {
                                                     "hotbar_items@chest_ui_inventory_system.hotbar_items": {
-							"$condition": 0,
+                                                        "$condition": 0,
                                                         "$start_index": 3
                                                     }
                                                 }
@@ -258,7 +258,10 @@
                         "50%",
                         "100%"
                     ],
-                    "offset": [0, 4],
+                    "offset": [
+                        0,
+                        4
+                    ],
                     "anchor_from": "top_right",
                     "anchor_to": "top_right",
                     "collection_name": "form_buttons",
@@ -297,7 +300,10 @@
             },
             {
                 "inventory_button_amount@chest_ui.inventory_button_amount": {
-                    "offset": [-4, -4]
+                    "offset": [
+                        -4,
+                        -4
+                    ]
                 }
             },
             {
@@ -349,7 +355,7 @@
             },
             {
                 "binding_type": "view",
-                "source_property_name": "(#form_button_texture * 1)",
+                "source_property_name": "((#form_button_texture - (#form_button_texture % 65536)) / 65536)",
                 "target_property_name": "#item_id_aux"
             }
         ],
@@ -394,19 +400,16 @@
                 }
             },
             {
-                "non_renderer_item@chest_ui.non_renderer_item": {
-                }
+                "non_renderer_item@chest_ui.non_renderer_item": {}
             },
             {
                 "item_details@chest_ui.item_details": {}
             },
             {
-                "highlight_slot@furnace_ui.highlight_slot": {
-                }
+                "highlight_slot@furnace_ui.highlight_slot": {}
             },
             {
-                "focus_border@furnace_ui.focus_border": {
-                }
+                "focus_border@furnace_ui.focus_border": {}
             }
         ]
     },
@@ -438,7 +441,7 @@
             }
         ]
     },
-    "highlight_slot@chest_ui.highlight_slot":{
+    "highlight_slot@chest_ui.highlight_slot": {
         "size": [
             26,
             26

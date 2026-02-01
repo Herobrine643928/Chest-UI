@@ -23,7 +23,6 @@
         "collection_name": "form_buttons",
         "layer": 1
     },
-    
     "chest_ui_template": {
         "type": "panel",
         "size": [
@@ -239,6 +238,15 @@
             }
         ]
     },
+    "cell": {
+        "type": "image",
+        "texture": "textures/ui/item_background",
+        "size": [
+            18,
+            18
+        ],
+        "layer": 2
+    },
     "inventory_item@common.button": {
         "$pressed_button_name": "button.form_button_click",
         "bindings": [
@@ -282,10 +290,10 @@
                 "target_property_name": "#visible"
             },
             {
-				"binding_type": "view",
-				"source_property_name": "((#form_button_texture - (#form_button_texture % 65536)) / 65536)",
-				"target_property_name": "#item_id_aux"
-			}
+                "binding_type": "view",
+                "source_property_name": "((#form_button_texture - (#form_button_texture % 65536)) / 65536)",
+                "target_property_name": "#item_id_aux"
+            }
         ],
         "default_control": "default",
         "hover_control": "hover",
@@ -592,14 +600,5 @@
                 "target_property_name": "#visible"
             }
         ]
-    },
-    "cell": {
-        "type": "image",
-        "texture": "textures/ui/item_background",
-        "size": [
-            18,
-            18
-        ],
-        "layer": 2
     }
 }

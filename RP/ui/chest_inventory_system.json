@@ -342,7 +342,7 @@
             },
             {
                 "binding_type": "view",
-                "source_property_name": "(#form_button_texture * 1)",
+                "source_property_name": "((#form_button_texture - (#form_button_texture % 65536)) / 65536)",
                 "target_property_name": "#item_id_aux"
             }
         ],
