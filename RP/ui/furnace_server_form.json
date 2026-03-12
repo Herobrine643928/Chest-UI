@@ -29,10 +29,21 @@
                                         "stack": {
                                             "type": "stack_panel",
                                             "orientation": "vertical",
-                                            "size": [
+                                            "size": "$size",
+					    "$size|default": [
                                                 162,
                                                 158
                                             ],
+					    "variables": [
+						{
+						    "requires": "$show_inventory",
+						    "$size": [162, 158]
+						},
+						{
+						    "requires": "(not $show_inventory)",
+						    "$size": [162, 86]
+						}
+					    ],
                                             "controls": [
                                                 {
                                                     "furnace@furnace_ui.furnace_items": {}
@@ -99,10 +110,21 @@
     },
     "furnace_items": {
         "type": "panel",
-        "size": [
+	"size": "$size",
+        "$size|default": [
             "100%",
             "50% - 7px"
         ],
+	"variables": [
+	    {
+		"requires": "$show_inventory",
+		"$size": ["100%", "50% - 7px"]
+	    },
+	    {
+		"requires": "(not $show_inventory)",
+		"$size": ["100%", "100% - 7px"]
+	    }
+	],
         "controls": [
             {
                 "furnace_label@furnace_ui.furnace_label": {}
