@@ -56,7 +56,7 @@ class ChestFormData {
 		}
 		this.#buttonArray.splice(Math.max(0, Math.min(slot, this.slotCount - 1)), 1, [
 			buttonRawtext,
-			ID === undefined ? targetTexture : ((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) + (enchanted ? 32768 : 0)
+			ID === undefined ? targetTexture : ((ID + (ID < 850 ? 0 : number_of_custom_items)) * 65536) + (enchanted ? 32768 : 0)
 		]);
 		return this;
 	}
@@ -94,7 +94,7 @@ class ChestFormData {
 				}
 				this.#buttonArray.splice(Math.max(0, Math.min(slot, this.slotCount - 1)), 1, [
 					buttonRawtext,
-					ID === undefined ? targetTexture : ((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) + (enchanted ? 32768 : 0)
+					ID === undefined ? targetTexture : ((ID + (ID < 850 ? 0 : number_of_custom_items)) * 65536) + (enchanted ? 32768 : 0)
 				]);
 			}
 		}
@@ -127,7 +127,7 @@ class ChestFormData {
 			};
 			const loreText = item.getLore().join('\n');
 			if (loreText) buttonRawtext.rawtext.push({ text: loreText });
-			const finalID = ID === undefined ? targetTexture : ((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536);
+			const finalID = ID === undefined ? targetTexture : ((ID + (ID < 850 ? 0 : number_of_custom_items)) * 65536);
 			form.button(buttonRawtext, finalID.toString());
 		}
 		return form.show(player);
@@ -180,7 +180,7 @@ class FurnaceFormData {
 		}
 		this.#buttonArray.splice(Math.max(0, Math.min(slot, this.slotCount - 1)), 1, [
 			buttonRawtext,
-			ID === undefined ? targetTexture : ((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) + (enchanted ? 32768 : 0)
+			ID === undefined ? targetTexture : ((ID + (ID < 850 ? 0 : number_of_custom_items)) * 65536) + (enchanted ? 32768 : 0)
 		]);
 		return this;
 	}
@@ -211,7 +211,7 @@ class FurnaceFormData {
 			};
 			const loreText = item.getLore().join('\n');
 			if (loreText) buttonRawtext.rawtext.push({ text: loreText });
-			const finalID = ID === undefined ? targetTexture : ((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536);
+			const finalID = ID === undefined ? targetTexture : ((ID + (ID < 850 ? 0 : number_of_custom_items)) * 65536);
 			form.button(buttonRawtext, finalID.toString());
 		}
 		return form.show(player);
