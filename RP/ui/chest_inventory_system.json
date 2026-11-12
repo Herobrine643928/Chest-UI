@@ -317,11 +317,6 @@
             {
                 "binding_type": "collection_details",
                 "binding_collection_name": "form_buttons"
-            },
-            {
-                "binding_type": "view",
-                "source_property_name": "(not (#form_button_text = ''))",
-                "target_property_name": "#visible"
             }
         ],
         "$aux_id": [

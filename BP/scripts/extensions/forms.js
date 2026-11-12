@@ -110,7 +110,7 @@ class ChestFormData {
 		const container = player.getComponent('inventory').container;
 		for (let i = 0; i < container.size; i++) {
 			const item = container.getItem(i);
-			if (!item) continue;
+			if (!item) { form.button(''); continue; } // empty slot: keeps its cell and can be hovered
 			const typeId = item.typeId;
 			const targetTexture = custom_content_keys.has(typeId) ? custom_content[typeId]?.texture : typeId;
 			const ID = typeIdToDataId.get(targetTexture) ?? typeIdToID.get(targetTexture);
@@ -194,7 +194,7 @@ class FurnaceFormData {
 		const container = player.getComponent('inventory').container;
 		for (let i = 0; i < container.size; i++) {
 			const item = container.getItem(i);
-			if (!item) continue;
+			if (!item) { form.button(''); continue; } // empty slot: keeps its cell and can be hovered
 			const typeId = item.typeId;
 			const targetTexture = custom_content_keys.has(typeId) ? custom_content[typeId]?.texture : typeId;
 			const ID = typeIdToDataId.get(targetTexture) ?? typeIdToID.get(targetTexture);

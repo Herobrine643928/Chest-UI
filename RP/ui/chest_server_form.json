@@ -265,12 +265,6 @@
                 "binding_name": "#form_button_text",
                 "binding_type": "collection",
                 "binding_collection_name": "form_buttons"
-            },
-            {
-                "binding_name": "#null",
-                "binding_type": "view",
-                "source_property_name": "(not (#form_button_text = ''))",
-                "target_property_name": "#visible"
             }
         ],
         "$aux_id": [
@@ -441,6 +435,11 @@
                 "target_property_name": "#hover_text"
             },
             {
+                "binding_type": "view",
+                "source_property_name": "(not (#form_button_text = ''))",
+                "target_property_name": "#visible"
+            },
+            {
                 "binding_type": "collection_details",
                 "binding_collection_name": "form_buttons"
             }
@@ -472,7 +471,7 @@
             },
             {
                 "binding_type": "view",
-                "source_property_name": "((#form_button_text - 'dur#00') = #form_button_text)",
+                "source_property_name": "(((#form_button_text - 'dur#00') = #form_button_text) and (not (#form_button_text = '')))",
                 "target_property_name": "#visible"
             }
         ],
@@ -518,6 +517,11 @@
                             "binding_type": "view",
                             "source_property_name": "(($clip_max - #ratio_1) / $clip_max)",
                             "target_property_name": "#clip_ratio"
+                        },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "('textures/ui/chest_ui/dur_' + (('%.13s' * #form_button_text) - ('%.12s' * #form_button_text)))",
+                            "target_property_name": "#texture"
                         }
                     ]
                 }
